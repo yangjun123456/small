@@ -1,0 +1,12 @@
+.share-sprite, .share-github, .share-qq {
+  background-image: url('../images/share-scd19d2d150.png');
+  background-repeat: no-repeat;
+}
+
+.share-github {
+  background-position: 0 0;
+}
+
+.share-qq {
+  background-position: 0 -23px;
+}
