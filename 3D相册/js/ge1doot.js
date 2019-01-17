@@ -17,22 +17,22 @@ var ge1doot = ge1doot || {
 		if (typeof url == "string") url = [url];
 		var load = function (src) {
 			var script = document.createElement("script");
-				if (callback) {
-					if (script.readyState){
-						script.onreadystatechange = function () {
-							if (script.readyState == "loaded" || script.readyState == "complete"){
-								script.onreadystatechange = null;
-								if (--n === 0) callback(data || false);
-							}
-						}
-					} else {
-						script.onload = function() {
+			if (callback) {
+				if (script.readyState) {
+					script.onreadystatechange = function () {
+						if (script.readyState == "loaded" || script.readyState == "complete") {
+							script.onreadystatechange = null;
 							if (--n === 0) callback(data || false);
 						}
 					}
+				} else {
+					script.onload = function () {
+						if (--n === 0) callback(data || false);
+					}
 				}
-				script.src = src;
-				document.getElementsByTagName("head")[0].appendChild(script);
+			}
+			script.src = src;
+			document.getElementsByTagName("head")[0].appendChild(script);
 		}
 		for (var i = 0, n = url.length; i < n; i++) load(url[i]);
 	}
@@ -53,14 +53,14 @@ ge1doot.Screen = function (setup) {
 	this.setup = setup;
 	this.resize = function () {
 		var o = this.elem;
-		this.width  = o.offsetWidth;
+		this.width = o.offsetWidth;
 		this.height = o.offsetHeight;
 		for (this.left = 0, this.top = 0; o != null; o = o.offsetParent) {
 			this.left += o.offsetLeft;
-			this.top  += o.offsetTop;
+			this.top += o.offsetTop;
 		}
 		if (this.ctx) {
-			this.elem.width  = this.width;
+			this.elem.width = this.width;
 			this.elem.height = this.height;
 		}
 		this.setup.resize && this.setup.resize();
@@ -81,36 +81,42 @@ ge1doot.Screen = function (setup) {
 
 ge1doot.Pointer = function (setup) {
 	ge1doot.pointer = this;
-	var self        = this;
-	var body        = document.body;
-	var html        = document.documentElement;
-	this.setup      = setup;
-	this.screen     = ge1doot.screen;
-	this.elem       = this.screen.elem;
-	this.X          = 0;
-	this.Y          = 0;
-	this.Xi         = 0;
-	this.Yi         = 0;
-	this.bXi        = 0;
-	this.bYi        = 0;
-	this.Xr         = 0;
-	this.Yr         = 0;
-	this.startX     = 0;
-	this.startY     = 0;
-	this.scale      = 0;
+	var self = this;
+	var body = document.body;
+	var html = document.documentElement;
+	this.setup = setup;
+	this.screen = ge1doot.screen;
+	this.elem = this.screen.elem;
+	this.X = 0;
+	this.Y = 0;
+	this.Xi = 0;
+	this.Yi = 0;
+	this.bXi = 0;
+	this.bYi = 0;
+	this.Xr = 0;
+	this.Yr = 0;
+	this.startX = 0;
+	this.startY = 0;
+	this.scale = 0;
 	this.wheelDelta = 0;
-	this.isDraging  = false;
-	this.hasMoved   = false;
-	this.isDown     = false;
-	this.evt        = false;
-	var sX          = 0;
-	var sY          = 0;
+	this.isDraging = false;
+	this.hasMoved = false;
+	this.isDown = false;
+	this.evt = false;
+	var sX = 0;
+	var sY = 0;
 	// prevent default behavior
-	if (setup.tap) this.elem.onclick = function () { return false; }
-	if (!setup.documentMove) {
-		document.ontouchmove = function(e) { e.preventDefault(); }
+	if (setup.tap) this.elem.onclick = function () {
+		return false;
 	}
-	document.addEventListener("MSHoldVisual", function(e) { e.preventDefault(); }, false);
+	if (!setup.documentMove) {
+		document.ontouchmove = function (e) {
+			e.preventDefault();
+		}
+	}
+	document.addEventListener("MSHoldVisual", function (e) {
+		e.preventDefault();
+	}, false);
 	if (typeof this.elem.style.msTouchAction != 'undefined') this.elem.style.msTouchAction = "none";
 
 	this.pointerDown = function (e) {
@@ -122,16 +128,16 @@ ge1doot.Pointer = function (setup) {
 			this.evt = e;
 			this.Xr = (e.clientX !== undefined ? e.clientX : e.touches[0].clientX);
 			this.Yr = (e.clientY !== undefined ? e.clientY : e.touches[0].clientY);
-			this.X  = sX = this.Xr - this.screen.left;
-			this.Y  = sY = this.Yr - this.screen.top + ((html && html.scrollTop) || body.scrollTop);
+			this.X = sX = this.Xr - this.screen.left;
+			this.Y = sY = this.Yr - this.screen.top + ((html && html.scrollTop) || body.scrollTop);
 			this.setup.down && this.setup.down(e);
 		}
 	}
-	this.pointerMove = function(e) {
+	this.pointerMove = function (e) {
 		this.Xr = (e.clientX !== undefined ? e.clientX : e.touches[0].clientX);
 		this.Yr = (e.clientY !== undefined ? e.clientY : e.touches[0].clientY);
-		this.X  = this.Xr - this.screen.left;
-		this.Y  = this.Yr - this.screen.top + ((html && html.scrollTop) || body.scrollTop);
+		this.X = this.Xr - this.screen.left;
+		this.Y = this.Yr - this.screen.top + ((html && html.scrollTop) || body.scrollTop);
 		if (this.isDown) {
 			this.Xi = this.bXi + (this.X - sX);
 			this.Yi = this.bYi - (this.Y - sY);
@@ -154,7 +160,7 @@ ge1doot.Pointer = function (setup) {
 		}
 		this.setup.move && this.setup.move(e);
 	}
-	this.pointerUp = function(e) {
+	this.pointerUp = function (e) {
 		this.bXi = this.Xi;
 		this.bYi = this.Yi;
 		if (!this.hasMoved) {
@@ -171,7 +177,7 @@ ge1doot.Pointer = function (setup) {
 		if (this.elem.releaseCapture) this.elem.releaseCapture();
 		this.evt = false;
 	}
-	this.pointerCancel = function(e) {
+	this.pointerCancel = function (e) {
 		if (this.elem.releaseCapture) this.elem.releaseCapture();
 		this.isDraging = false;
 		this.hasMoved = false;
@@ -182,15 +188,27 @@ ge1doot.Pointer = function (setup) {
 		sY = 0;
 	}
 	if ('ontouchstart' in window) {
-		this.elem.ontouchstart      = function (e) { self.pointerDown(e); return false;  }
-		this.elem.ontouchmove       = function (e) { self.pointerMove(e); return false;  }
-		this.elem.ontouchend        = function (e) { self.pointerUp(e); return false;    }
-		this.elem.ontouchcancel     = function (e) { self.pointerCancel(e); return false;}
+		this.elem.ontouchstart = function (e) {
+			self.pointerDown(e);
+			return false;
+		}
+		this.elem.ontouchmove = function (e) {
+			self.pointerMove(e);
+			return false;
+		}
+		this.elem.ontouchend = function (e) {
+			self.pointerUp(e);
+			return false;
+		}
+		this.elem.ontouchcancel = function (e) {
+			self.pointerCancel(e);
+			return false;
+		}
 	}
 	document.addEventListener("mousedown", function (e) {
 		if (
-			e.target === self.elem || 
-			(e.target.parentNode && e.target.parentNode === self.elem) || 
+			e.target === self.elem ||
+			(e.target.parentNode && e.target.parentNode === self.elem) ||
 			(e.target.parentNode.parentNode && e.target.parentNode.parentNode === self.elem)
 		) {
 			if (typeof e.stopPropagation != "undefined") {
@@ -199,16 +217,20 @@ ge1doot.Pointer = function (setup) {
 				e.cancelBubble = true;
 			}
 			e.preventDefault();
-			self.pointerDown(e); 
+			self.pointerDown(e);
 		}
 	}, false);
-	document.addEventListener("mousemove", function (e) { self.pointerMove(e); }, false);
-	document.addEventListener("mouseup",   function (e) {
+	document.addEventListener("mousemove", function (e) {
+		self.pointerMove(e);
+	}, false);
+	document.addEventListener("mouseup", function (e) {
 		self.pointerUp(e);
 	}, false);
-	document.addEventListener('gesturechange', function(e) {
+	document.addEventListener('gesturechange', function (e) {
 		e.preventDefault();
-		if (e.scale > 1) self.scale = 0.1; else if (e.scale < 1) self.scale = -0.1; else self.scale = 0;
+		if (e.scale > 1) self.scale = 0.1;
+		else if (e.scale < 1) self.scale = -0.1;
+		else self.scale = 0;
 		self.setup.scale && self.setup.scale(e);
 		return false;
 	}, false);
@@ -216,50 +238,50 @@ ge1doot.Pointer = function (setup) {
 		var nContact = 0;
 		var myGesture = new MSGesture();
 		myGesture.target = this.elem;
-		this.elem.addEventListener("MSPointerDown", function(e) {
+		this.elem.addEventListener("MSPointerDown", function (e) {
 			if (e.pointerType == e.MSPOINTER_TYPE_TOUCH) {
 				myGesture.addPointer(e.pointerId);
 				nContact++;
 			}
 		}, false);
-		this.elem.addEventListener("MSPointerOut", function(e) {
+		this.elem.addEventListener("MSPointerOut", function (e) {
 			if (e.pointerType == e.MSPOINTER_TYPE_TOUCH) {
 				nContact--;
 			}
 		}, false);
-		this.elem.addEventListener("MSGestureHold", function(e) {
+		this.elem.addEventListener("MSGestureHold", function (e) {
 			e.preventDefault();
 		}, false);
-		this.elem.addEventListener("MSGestureChange", function(e) {
+		this.elem.addEventListener("MSGestureChange", function (e) {
 			if (nContact > 1) {
-				if (e.preventDefault) e.preventDefault(); 
+				if (e.preventDefault) e.preventDefault();
 				self.scale = e.velocityExpansion;
 				self.setup.scale && self.setup.scale(e);
 			}
 			return false;
 		}, false);
 	}
-	if (window.addEventListener) this.elem.addEventListener('DOMMouseScroll', function(e) { 
-		if (e.preventDefault) e.preventDefault(); 
+	if (window.addEventListener) this.elem.addEventListener('DOMMouseScroll', function (e) {
+		if (e.preventDefault) e.preventDefault();
 		self.wheelDelta = e.detail * 10;
 		self.setup.wheel && self.setup.wheel(e);
-		return false; 
-	}, false); 
-	this.elem.onmousewheel = function () { 
+		return false;
+	}, false);
+	this.elem.onmousewheel = function () {
 		self.wheelDelta = -event.wheelDelta * .25;
 		self.setup.wheel && self.setup.wheel(event);
-		return false; 
+		return false;
 	}
 }
 // ===== request animation frame =====
 
-window.requestAnimFrame = (function(){
-		return  window.requestAnimationFrame || 
-		window.webkitRequestAnimationFrame   || 
-		window.mozRequestAnimationFrame      || 
-		window.oRequestAnimationFrame        || 
-		window.msRequestAnimationFrame       || 
-		function( run ){
+window.requestAnimFrame = (function () {
+	return window.requestAnimationFrame ||
+		window.webkitRequestAnimationFrame ||
+		window.mozRequestAnimationFrame ||
+		window.oRequestAnimationFrame ||
+		window.msRequestAnimationFrame ||
+		function (run) {
 			window.setTimeout(run, 16);
 		};
 })();

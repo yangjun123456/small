@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
 	var container = $('#container'),
 		li = container.find('li');
@@ -9,27 +9,25 @@ $(document).ready(function(){
 
 	container.tzShutter({
 		imgSrc: 'assets/jquery.shutter/shutter.png',
-		closeCallback: function(){
-
+		closeCallback: function () {
 			// Cycling the visibility of the li items to
 			// create a simple slideshow.
-
 			li.filter(':visible:first').hide();
-			
-			if(li.filter(':visible').length == 0){
+			if (li.filter(':visible').length == 0) {
 				li.show();
 			}
-			
 			// Scheduling a shutter open in 0.1 seconds:
-			setTimeout(function(){container.trigger('shutterOpen')},100);
+			setTimeout(function () {
+				container.trigger('shutterOpen')
+			}, 100);
 		},
-		loadCompleteCallback:function(){
-			setInterval(function(){
+		loadCompleteCallback: function () {
+			setInterval(function () {
 				container.trigger('shutterClose');
-			},4000);
-			
+			}, 4000);
+
 			container.trigger('shutterClose');
 		}
 	});
-	
+
 });

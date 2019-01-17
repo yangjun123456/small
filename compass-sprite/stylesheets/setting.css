@@ -1,5 +1,5 @@
-.setting-sprite, .setting-compass, .setting-github, .setting-qq, .setting-weibo, .special {
-  background-image: url('../images/setting-s5a4bedd975.png');
+.asldfkjalsdkjflaksjdflkajsdf, .setting-compass, .setting-github, .setting-qq, .setting-weibo, .special {
+  background-image: url('../images/setting-s2c79b302d7.png');
   background-repeat: no-repeat;
 }
 
@@ -14,9 +14,12 @@
 .setting-qq {
   background-position: -5px -68px;
 }
+.setting-qq:hover, .setting-qq.qq-hover {
+  background-position: -5px -97px;
+}
 
 .setting-weibo {
-  background-position: -10px -102px;
+  background-position: 0 -151px;
 }
 
 .special {

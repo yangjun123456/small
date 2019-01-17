@@ -2,17 +2,20 @@
 
 // 配置间距
 $setting-spacing: 5px;
-$setting-weibo-spacing: 10px;
+$setting-weibo-spacing: 30px;
 
 // 配置位置
 $setting-position: 5px;
-$setting-weibo-position: 10px;
+$setting-weibo-position: 0px;
 
 // 配置sprite的布局方式
-$setting-layout: vertical;  // vertical/horizontal/diagonal/smart
+$setting-layout: vertical; // vertical/horizontal/diagonal/smart
 
 //清除过期的sprite
-$setting-clean-up: true;        // 默认值为true
+$setting-clean-up: true; // 默认值为true
+
+// 配置sprite的基础类
+$setting-sprite-base-class: ".asldfkjalsdkjflaksjdflkajsdf";
 
 // 自动输出尺寸
 $setting-sprite-dimensions: false;
@@ -24,7 +27,7 @@ $setting-sprite-dimensions: false;
 
 // 测试此段代码时应将$setting-sprite-dimensions值设为false
 .special {
-	@include setting-sprite(compass);    //输出compass的图片名字的位置 
-	width: setting-sprite-width(compass);  //输出compass的图片名字的尺寸
+	@include setting-sprite(compass); //输出compass的图片名字的位置 
+	width: setting-sprite-width(compass); //输出compass的图片名字的尺寸
 	height: setting-sprite-height(compass);
 }
