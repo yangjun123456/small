@@ -1,10 +1,10 @@
 body {
-	margin: 0;
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: black;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
 }
 
 .loader {
@@ -22,6 +22,20 @@ body {
     border-radius: 50%;
     border-style: solid;
     animation: animate 3s linear infinite;
+}
+
+.test {
+    position: absolute;
+    border-radius: 50%;
+    border-style: solid;
+    animation: animate 3s linear infinite;
+    width: 50px;
+    height: 50px;
+    color: gold;
+    border-color: yellow red blue pink;
+    border-width: 0.1em 0.2em 0.3em 0.4em;
+    --deg: -45deg;
+    animation-direction: normal;
 }
 
 .loader .face:nth-child(1) {
@@ -65,11 +79,11 @@ body {
     background-color: currentColor;
     border-radius: 50%;
     box-shadow: 0 0 2em,
-                0 0 4em,
-                0 0 6em,
-                0 0 8em,
-                0 0 10em,
-                0 0 0 0.5em rgba(255, 255, 0, 0.1);
+        0 0 4em,
+        0 0 6em,
+        0 0 8em,
+        0 0 10em,
+        0 0 0 0.5em rgba(255, 255, 0, 0.1);
 }
 
 @keyframes animate {
