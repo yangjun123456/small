@@ -1,0 +1,132 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#player1 {
+    border: 1px solid;
+    width: 768px;
+    height: 430px;
+    position: absolute;
+}
+
+.player {
+    position: absolute;
+}
+
+.playerBar {
+    border: 1px solid;
+    position: relative;
+    bottom: -100%;
+    width: 100%;
+    height: 15%;
+    background-color: #ccc;
+}
+
+.play,
+.pause,
+.go10,
+.back10,
+.muted1,
+.muted0,
+.full,
+.vol {
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+}
+
+#progressbar {
+    background-color: #000;
+    height: 10px;
+}
+
+#progress {
+    background-color: red;
+    height: 10px;
+}
+
+.play {
+    bottom: 2%;
+    left: 45%;
+    background: url("img/7.png");
+    background-size: 48px 48px;
+    width: 48px;
+    height: 48px;
+    background-color: red;
+}
+
+.pause {
+    bottom: 2%;
+    left: 45%;
+    background: url("img/5.png");
+    background-size: 48px 48px;
+    width: 48px;
+    height: 48px;
+    background-color: blue;
+}
+
+.go10 {
+    bottom: 2%;
+    left: 52%;
+    background: url("img/1.png");
+    background-size: 32px 32px;
+    width: 32px;
+    height: 32px;
+    background-color: purple;
+}
+
+.back10 {
+    bottom: 2%;
+    left: 40%;
+    background: url("img/9.png");
+    background-size: 32px 32px;
+    width: 32px;
+    height: 32px;
+    background-color: pink;
+}
+
+.muted1 {
+    bottom: 2%;
+    right: 30%;
+    background: url("img/14.png");
+    background-size: 32px 32px;
+    width: 32px;
+    height: 32px;
+    background-color: green;
+}
+
+.muted0 {
+    bottom: 2%;
+    right: 30%;
+    background: url("img/15.png");
+    background-size: 32px 32px;
+    width: 32px;
+    height: 32px;
+    background-color: skyblue;
+}
+
+.full {
+    bottom: 5%;
+    right: 1%;
+    background: url("img/16.png");
+    background-size: 32px 32px;
+    width: 32px;
+    height: 32px;
+    background-color: black;
+}
+
+.vol {
+    width: 20%;
+    bottom: 30%;
+    right: 8%;
+    color: #ccc;
+}
+
+.time {
+    position: absolute;
+    top: 15%;
+    right: 0;
+    font-size: 12px;
+}

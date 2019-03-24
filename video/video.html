@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./video.css">
+    <script src="../jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="player1">
+        <video src="./test.mp4" class="player">
+            no zhi chi
+        </video>
+        <div class="playerBar">
+            <div id="progressbar">
+                <div id="progress"></div>
+            </div>
+            <p class="time"></p>
+            <span class="play"></span>
+            <span class="pause"></span>
+            <span class="go10"></span>
+            <span class="back10"></span>
+            <input type="range" class="vol">
+            <span class="muted1"></span>
+            <span class="muted0"></span>
+            <span class="full"></span>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var video = $('.player');
+            $('.pause').css('display', 'none');
+            $('.play').click(function () {
+                video[0].play();
+                $('.play').css('display', 'none');
+                $('.pause').css('display', 'block');
+                var all = video[0].duration;
+                var allhour = parseInt(all / 3600);
+                var allminute = parseInt((all - allhour * 3600) / 60);
+                var allseconds = parseInt(all - allhour * 3600 - allminute * 60);
+                var t = setInterval(function () {
+                    var now = video[0].currentTime;
+                    if (now === all) {
+                        clearInterval(t);
+                    }
+                    var cent = now / all * 100;
+                    progressfn(cent);
+                    var hour = parseInt(now / 3600);
+                    var minute = parseInt((now - hour * 3600) / 60);
+                    var seconds = parseInt(now - hour * 3600 - minute * 60);
+                    $('.time').html(hour + ':' + minute + ':' + seconds + '/' + allhour + ':' +
+                        allminute + ':' + allseconds);
+                }, 1000);
+            })
+
+            $('.pause').click(function () {
+                video[0].pause();
+                $('.pause').css('display', 'none');
+                $('.play').css('display', 'block');
+            })
+            $('.go10').click(function () {
+                video[0].currentTime += 2;
+            })
+            $('.back10').click(function () {
+                video[0].currentTime -= 2;
+            })
+            $('.muted1').click(function () {
+                video[0].muted = false;
+                $('.muted1').css('display', 'none');
+                $('.muted0').css('display', 'block');
+            })
+            $('.muted0').click(function () {
+                video[0].muted = true;
+                $('.muted0').css('display', 'none');
+                $('.muted1').css('display', 'block');
+            })
+            $('.full').click(function () {
+                video[0].mozRequestFullScreen();
+                video[0].webkitRequestFullScreen();
+            })
+            $('.vol').click(function () {
+                video[0].volume = $('.vol').val() / 100;
+            })
+
+            function progressfn(cent) {
+                var progressbar = document.getElementById('progressbar');
+                var progress = document.getElementById('progress');
+                progress.style.width = cent + '%';
+
+            }
+        })
+    </script>
+</body>
+
+</html>
