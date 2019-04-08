@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://demo.lanrenzhijia.com/demo/37/3751/demo/ -->
+<html lang="zh">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HTML5 Canvas图片倒影波纹动画特效</title>
+
+	<link rel="stylesheet" type="text/css" href="./css/reset.css">
+	<link rel="stylesheet" type="text/css" href="./css/demo.css">
+	<style type="text/css">
+		#lakes {
+			overflow: hidden;
+		}
+
+		#container {
+			width: 720px;
+			margin: 30px auto;
+		}
+
+		canvas {
+			float: left;
+		}
+	</style>
+
+	<script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="./js/lake.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$('#lake-img').lake({
+				'waves': 6,
+				'scale': 0.5
+			});
+
+			$('#lake-img2').lake();
+
+			$('#lake-img3').lake({
+				'speed': 1.5,
+				'scale': 1.5
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<!-- <script src="./js/googlegg.js"></script> -->
+	<style type="text/css">
+		.schmenu {
+			height: 33px;
+			line-height: 33px;
+			background: #636871;
+			width: 100%;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+
+		.schmenu ul {
+			width: 1180px;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+
+		.schmenu ul li {
+			float: left;
+			list-style: none;
+		}
+
+		.schmenu ul li a {
+			height: 33px;
+			line-height: 33px;
+			display: block;
+			color: #fff;
+			font-size: 13px;
+			padding: 0 10px;
+			text-decoration: none;
+		}
+
+		.schmenu ul li a:hover {
+			color: #fff;
+			background: #000;
+			text-decoration: none;
+			-moz-transition: all 0.2s ease;
+			-webkit-transition: all 0.2s ease;
+			-o-transition: all 0.2s ease;
+			-moz-transition: all 0.2s ease;
+			transition: all 0.2s ease;
+		}
+	</style>
+	<div class="schmenu">
+		<!-- <ul>
+			<li><a href="http://www.lanrenzhijia.com/">返回首页</a></li>
+			<li><a href="http://www.sucaihuo.com/js" target="_blank">网页特效</a></li>
+			<li><a href="http://www.sucaihuo.com/js/149-0-0-0" target="_blank">手机特效</a></li>
+			<li><a href="http://www.sucaihuo.com/js/9-0-0-0" target="_blank">TAB选项卡</a></li>
+			<li><a href="http://www.sucaihuo.com/js/162-0-0-0" target="_blank">html5游戏</a></li>
+			<li><a href="http://www.sucaihuo.com/source" target="_blank">网站源码</a></li>
+			<li><a href="http://www.sucaihuo.com/video" target="_blank">视频教程</a></li>
+			<li><a href="http://www.sucaihuo.com/php" target="_blank">PHP实例</a></li>
+			<li><a href="http://www.sucaihuo.com/templates" target="_blank">网站模板</a></li>
+			<li><a href="http://www.sucaihuo.com/templates/0-0-108-0-0-0" target="_blank">手机网站模板</a></li>
+			<li><a href="http://www.sucaihuo.com/templates/0-0-52-0-0-0" target="_blank">html5响应式网站模板</a></li>
+			<li><a href="http://www.sucaihuo.com/templates/0-0-0-0-96-0" target="_blank">中文网站模板</a></li>
+			<li><a href="http://www.sucaihuo.com/" target="_blank">更多网页素材</a></li>
+		</ul> -->
+	</div>
+
+
+	<div id="container">
+		<div id="lakes">
+			<canvas width="720" height="224"></canvas><img id="lake-img" src="./img/lake.png" style="display: none;">
+			<canvas width="360" height="260"></canvas><img id="lake-img2" src="./img/lake2.png" style="display: none;">
+			<canvas width="360" height="260"></canvas><img id="lake-img3" src="./img/lake3.png" style="display: none;">
+		</div>
+	</div>
+
+	<!-- <div style="text-align:center;margin:50px 0; font:normal 14px/24px &#39;MicroSoft YaHei&#39;;">
+		<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+		<p>来源：<a href="http://www.lanrenzhijia.com/" target="_blank">懒人素材</a></p>
+	</div> -->
+
+
+</body>
+
+</html>
