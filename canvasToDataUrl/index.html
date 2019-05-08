@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas width="1000" height="1000" id='canvas'></canvas>
+    <script>
+        const canvas = document.querySelector('#canvas');
+        const ctx = canvas.getContext('2d');
+
+        ctx.save();
+        ctx.strokeStyle = "#0000ff";
+        ctx.lineWidth = '10';
+        ctx.save();
+        ctx.fillStyle = "rgb(200,0,0)";
+        ctx.fillRect(310, 310, 55, 50);
+        // ctx.save();
+        ctx.fillStyle = "rgb(200,0,0)";
+        ctx.fillRect(310, 310, 55, 50);
+
+        ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+        ctx.fillRect(330, 330, 55, 50);
+
+        ctx.restore();
+
+        ctx.beginPath();
+        ctx.arc(100, 100, 99, 0, 2 * Math.PI, false);
+        ctx.moveTo(194, 100);
+        ctx.arc(100, 100, 94, 0, 2 * Math.PI, false);
+        ctx.moveTo(100, 100);
+        ctx.lineTo(100, 15);
+        ctx.moveTo(100, 100);
+        ctx.lineTo(35, 100);
+        ctx.closePath();
+        ctx.stroke();
+
+        ctx.restore();
+
+        ctx.beginPath();
+        ctx.arc(200, 200, 100, 0, 2 * Math.PI, false);
+        ctx.moveTo(294, 200);
+        ctx.arc(200, 200, 94, 0, 2 * Math.PI, false);
+        ctx.moveTo(200, 200);
+        ctx.lineTo(200, 115);
+        ctx.moveTo(200, 200);
+        ctx.lineTo(135, 200);
+        ctx.closePath();
+        ctx.stroke();
+
+        // 绘制文本
+        ctx.beginPath();
+        ctx.font = 'bold 34px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseLine = 'middle';
+        ctx.fillText('杨', 200, 120);
+        ctx.closePath();
+
+        {
+            // 绘制文本时自适应文字大小
+            var fontSize = 100;
+            ctx.font = fontSize + "px Arial";
+            while (ctx.measureText("hello world!").width > 120) {
+                fontSize--;
+                ctx.font = fontSize + "px Arial";
+            }
+            ctx.fillText('Hello world!', 300, 300);
+            ctx.fillText('Font size is ' + fontSize + "px", 300, 400);
+        }
+
+
+        ctx.save();
+        ctx.translate(500, 500);
+        ctx.rotate(90);
+        ctx.strokeStyle = 'blue';
+        ctx.beginPath();
+        ctx.fillRect(0, 0, 50, 50);
+        ctx.closePath();
+        ctx.stroke();
+
+        ctx.restore(); 
+
+        ctx.strokeStyle = 'blue';
+        ctx.beginPath();
+        ctx.fillRect(400, 100, 50, 50);
+        ctx.closePath();
+        ctx.stroke();
+
+
+
+
+
+
+
+
+        var imgUrl = canvas.toDataURL('image/png');
+        var image = document.createElement('img');
+        console.log(imgUrl);
+        image.src = imgUrl;
+        document.body.appendChild(image);
+    </script>
+</body>
+
+</html>

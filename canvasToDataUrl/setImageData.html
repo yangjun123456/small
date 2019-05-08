@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./test.jpg" id='testImg' width="300" alt="">
+    <canvas width="1000" height="1000" id='canvas'></canvas>
+    <script>
+        document.getElementById("testImg").onload = function () {
+            const canvas = document.querySelector('#canvas');
+            const context = canvas.getContext('2d');
+            // var image = document.images[0];
+            var image = document.querySelector('#testImg');
+            // context.save();
+            // context.beginPath();
+            context.drawImage(image, 0, 0);
+
+            // context.fillRect(0, 0, 500, 300);
+            // context.closePath();
+            // context.stroke();
+            // context.restore();
+
+            // var imageData = context.getImageData(0, 0, 500, 500);
+            // console.log(imageData);
+
+
+
+
+
+
+
+
+            // var imgUrl = canvas.toDataURL('image/png');
+            // var createImage = document.createElement('img');
+            // // console.log(imgUrl);
+            // createImage.src = imgUrl;
+            // document.body.appendChild(createImage);
+        }
+
+    </script>
+</body>
+
+</html>

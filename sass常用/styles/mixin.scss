@@ -1,0 +1,23 @@
+/*
+    mixin
+*/
+
+@mixin firefox-message($selector) {
+    body.firefox #{$selector}:before {
+        content: "Hi, Firefox users!";
+    }
+}
+
+@include firefox-message(".header");
+/*  
+    @if
+*/
+
+@mixin numberColor( $number, $color1, $color2) {
+    @if ($number==1) {
+        background-color: $color1;
+    }
+    @else if($number==2) {
+        background-color: $color2;
+    }
+}

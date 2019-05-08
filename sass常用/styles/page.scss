@@ -1,0 +1,168 @@
+@charset 'utf-8';
+$pagesHeight:calc(100% - 6rem);
+$topWidth: 35;
+$topHeight: $topWidth * 258px/540px;
+
+.pages {
+    position: relative;
+    /*
+        百分比减去固定值计算
+    */
+    height: $pagesHeight;
+    width: 100%;
+    background-color: beige;
+    overflow: auto;
+
+    .top {
+        /* 图片的宽度占比 */
+        background-color: aquamarine;
+        width: 100%;
+
+        /* 根据图片的宽度占比及图片比例动态计算设置图片父级的高度及图片的高度 */
+        img.banner {
+            height: $topHeight*1%;
+            margin: 0 auto;
+            display: block;
+            width: 35%;
+        }
+    }
+
+    .main {
+        height: 100px;
+
+        ul {
+            li {
+                float: left;
+                width: 8rem;
+                height: 12rem;
+                margin: 1rem;
+            }
+
+            li:not(:first-child) {
+                margin-right: 1rem;
+            }
+
+            li:nth-child(odd) {
+                @include numberColor(1, cadetblue, null);
+            }
+
+            li:nth-child(even) {
+                @include numberColor(2, null, azure);
+            }
+        }
+
+        /* 
+            @for 循环
+        */
+        @for $i from 1 through 10 {
+            .item-#{$i} {
+                background-image: url('../images/#{$i}.png');
+                background-size: 100% 100%;
+            }
+        }
+    }
+}
+
+/* 
+    @for 循环
+*/
+
+// class span1-$gridColumns // span的class循环输出，通过变量$gridSpanSwitch来控制是否输出 //----------------------------------------------------- 
+$gridColumns: 12 !default;
+$gridcolumnWidth: 60px !default;
+$gridGutter: 20px !default;
+
+// 占位符
+%span-base {
+    float: left;
+    margin-left: $gridGutter / 2;
+    margin-right: $gridGutter / 2;
+}
+
+@for $i from 1 through $gridColumns {
+    .span#{$i} {
+        @extend %span-base;
+        width: ($gridcolumnWidth + $gridGutter) * $i - $gridGutter;
+    }
+}
+
+/*
+    @each
+*/
+
+$sprite: puma sea-slug egret salamander !default;
+
+@each $animal in $sprite {
+    .#{$animal}-icon {
+        background-image: url('/images/#{$animal}.png');
+    }
+}
+
+// @each
+$btnColorClass: (primary #0078E7 #fff) (blue #00A3CF #fff) (orange #F47837 #fff) !default;
+
+@mixin btn-color($bgColor:#e6e6e6,
+    $textColor:#333) {
+    color: $textColor;
+    background-color: $bgColor;
+    border: 1px solid darken($bgColor, 5%);
+    border-color: lighten($bgColor, 2%) darken($bgColor, 5%) darken($bgColor, 5%) lighten($bgColor, 2%);
+
+    &:hover {
+        background-color: darken($bgColor, 5%);
+        color: $textColor;
+    }
+}
+
+@each $colorClass in $btnColorClass {
+    $class: nth($colorClass, 1); // 返回列表中的制定的某个标签值-----sass 内置的函数
+    $bgColor: nth($colorClass, 2);
+    $textColor: nth($colorClass, 3);
+
+    .btn-#{$class} {
+        @include btn-color($bgColor,
+            $textColor);
+    }
+}
+
+;
+/*
+    函数
+*/
+
+$grid-width: 40px;
+$gutter-width: 10px;
+
+@function grid-width($n) {
+    @return $n * $grid-width+($n - 1) * $gutter-width;
+}
+
+#sidebar {
+    width: grid-width(5);
+}
+
+// 使用sass maps管理字体大小
+$p-font-sizes: (null: 15px,
+    480px: 16px,
+    640px: 17px,
+    1024px: 19px);
+
+@mixin font-size($fs-map) {
+
+    @each $fs-breakpoint,
+    $fs-font-size in $fs-map {
+        @if $fs-breakpoint==null {
+            font-size: $fs-font-size;
+        }
+
+        @else {
+            @media screen and (min-width: $fs-breakpoint) {
+                font-size: $fs-font-size;
+            }
+        }
+    }
+}
+
+p {
+    @include font-size($p-font-sizes);
+}
