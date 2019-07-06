@@ -10,6 +10,7 @@
 
 <body>
     <canvas width="1000" height="1000" id='canvas'></canvas>
+    <!-- 基本使用方法 -->
     <script>
         const canvas = document.querySelector('#canvas');
         const ctx = canvas.getContext('2d');
@@ -91,7 +92,18 @@
         ctx.closePath();
         ctx.stroke();
 
-
+        ctx.beginPath();
+        ctx.strokeStyle = 'red';
+        ctx.lineWidth = 5;
+        ctx.moveTo(300,100);
+        ctx.lineTo(300,0);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(300,0);
+        ctx.lineTo(400,100);
+        ctx.closePath();
+        ctx.stroke();
 
 
 

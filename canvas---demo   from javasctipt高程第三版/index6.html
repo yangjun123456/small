@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas width="1000" height="1000" id='canvas'></canvas>
+    <!-- 基本使用方法 -->
+    <script>
+        const canvas = document.querySelector('#canvas');
+        const context = canvas.getContext('2d');
+
+        var deg = Math.PI / 180; //  角度转换为弧度
+
+        // 绘制n级别的科赫雪花的一条边
+        // 此函数在画完一条边的时候就离开当前点
+        // 然后通过坐标系变换将当前点又转换成（0，0，）
+        // 这意味着画完一条边之后可以很简单地调用rotate()进行旋转
+        function leg(c, len, n) {
+            c.save(); // 保存当前坐标系变换
+            if (n === 0) { // 不需要递归的情况下
+                c.lineTo(len, 0); // 就绘制一条水平线段
+            } else {                  // 递归情况下：绘制4条子边
+                c.scale(1 / 3, 1 / 3);
+                leg(c, len, n - 1); // 递归第一条子边
+                c.rotate(60 * deg); // 顺时针旋转60deg
+                leg(c, len, n - 1); // 第二条子边
+                c.rotate(-120 * deg); // 逆时针旋转120deg
+                leg(c, len, n - 1); // 第三条子边
+                c.rotate(60 * deg); // 通过旋转回到初始状态
+                leg(c, len, n - 1); // 最后一条边
+            }
+            c.restore();
+            c.translate(len, 0);
+        }
+
+        // 在画布的上下文c中，以左下角的点(x,y)和变长len，绘制一个n级别的科赫雪花分形
+        function snowflake(c, n, x, y, len) {
+            c.save(); // 保存当前变换
+            c.translate(x, y); // 变换原点为起始点
+            c.moveTo(0, 0); // 从新的原点开始一条新的子路径
+            leg(c, len, n); // 绘制雪花的第一条边
+            c.rotate(-120 * deg); // 现在沿着逆时针方向旋转120deg
+            leg(c, len, n); // 绘制第二条边
+            c.rotate(-120 * deg); // 再次旋转
+            leg(c, len, n); // 画最后一条边
+            c.closePath(); // 闭合子路径
+            c.restore(); // 恢复初始的变换
+        }
+
+        context.strokeStyle = 'red';
+        context.lineWidth = 5;
+
+        snowflake(context, 0, 5, 115, 125);
+        snowflake(context, 1, 145, 115, 125);
+        snowflake(context, 2, 285, 115, 125);
+        snowflake(context, 3, 425, 115, 125);
+        snowflake(context, 4, 565, 115, 125);
+        context.stroke();
+
+
+
+
+        var imgUrl = canvas.toDataURL('image/png');
+        var image = document.createElement('img');
+        console.log(imgUrl);
+        image.src = imgUrl;
+        document.body.appendChild(image);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas width="1000" height="1000" id='canvas'></canvas>
+    <!-- 基本使用方法 -->
+    <script>
+        const canvas = document.querySelector('#canvas');
+        const context = canvas.getContext('2d');
+
+        context.save();
+        context.beginPath();
+        context.fillStyle = '#ff0000';
+        context.fillRect(0, 0, 50, 50);
+
+        context.globalAlpha = 0.5;
+
+        context.fillStyle = '#00ff00';
+        context.fillRect(15, 15, 50, 50);
+
+        context.globalAlpha = 0.5;
+
+        context.fillStyle = 'rgba(0,0,255,1)';
+        context.fillRect(30, 30, 50, 50);
+
+        context.globalAlpha = 0;
+        context.closePath();
+
+
+        context.restore();
+
+        context.beginPath();
+        context.fillStyle = 'rgba(0,0,255,1)';
+        context.fillRect(100, 100, 50, 50);
+        context.globalCompositeOperation = 'source-over';
+        context.fillStyle = '#00ff00';
+        context.fillRect(90, 90, 50, 50);
+
+        context.closePath();
+
+
+
+
+
+
+        var imgUrl = canvas.toDataURL('image/png');
+        var image = document.createElement('img');
+        console.log(imgUrl);
+        image.src = imgUrl;
+        document.body.appendChild(image);
+    </script>
+</body>
+
+</html>

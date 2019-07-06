@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        img,
+        canvas {
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./test.jpg" id='testImg' width="300" alt="">
+    <canvas width="1000" height="1000" id='canvas' style="background-color:rgba(0,0,255,0.5);"></canvas>
+    <script>
+        document.getElementById("testImg").onload = function () {
+            const canvas = document.querySelector('#canvas');
+            const context = canvas.getContext('2d');
+            // var image = document.images[0];
+            var image = document.querySelector('#testImg');
+            const [imgW, imgH] = [image.offsetWidth, image.offsetHeight];
+
+            context.save();
+
+            context.drawImage(image, 0, 0, imgW, imgH);
+            var imageData = context.getImageData(0, 0, imgW, imgH);
+            console.log(imageData);
+            var data = imageData.data,
+                red = data[0],
+                green = data[1],
+                blue = data[2],
+                alpha = data[3];
+            var average = 0;
+
+            for (var i = 0; i < data.length; i += 4) {
+                red = data[i];
+                green = data[i + 1];
+                blue = data[i + 2];
+                alpha = data[i + 3];
+
+                average = Math.floor((red + green + blue) / 3);
+                data[i] = average;
+                data[i + 1] = average;
+                data[i + 2] = average;
+            }
+
+            imageData.data = data;
+            context.putImageData(imageData, 0, 0);
+
+
+            
+
+            var imgUrl = canvas.toDataURL('image/png');
+            var createImage = document.createElement('img');
+            // console.log(imgUrl);
+            createImage.src = imgUrl;
+            document.body.appendChild(createImage);
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="1000" height="1000" style="background:#000000;">
+        不支持canvas
+    </canvas>
+    <img style="display:none;" src="./img/5.jpg" id="img" alt="">
+    <script>
+        var img = document.querySelector('#img')
+
+        var canvas = document.querySelector('#canvas');
+        var cxt = canvas.getContext('2d');
+        var m = 0;
+        var colorArr = ['yellow', 'orange', 'blue', '#000', 'red', 'pink', 'purple'];
+        cxt.translate(500, 500);
+        cxt.rotate(50 * Math.PI / 180);;
+
+        function draw() {
+            cxt.clearRect(0, 0, 1000, 1000);
+            cxt.strokeStyle = colorArr[m % colorArr.length];
+            cxt.lineWidth = 15;
+
+            cxt.save();
+
+            if (m > colorArr.length) {
+                m = 0;
+            } else {
+                m++;
+            }
+            cxt.lineWidth = 10;
+            var color = colorArr[m % colorArr.length];
+            cxt.strokeStyle = color;
+
+            for (i = -100; i < 100; i++) {
+                cxt.beginPath();
+                cxt.moveTo(-5000, i * 30);
+                cxt.lineTo(5000, i * 30);
+                cxt.closePath();
+                cxt.stroke();
+            }
+
+            cxt.restore();
+
+            cxt.beginPath();
+            cxt.arc(100, 200, 10, 0, 360, false);
+            cxt.closePath();
+            cxt.stroke();
+
+            cxt.beginPath();
+            cxt.drawImage(img, 10, 10, 100, 100);
+            cxt.closePath();
+
+        }
+        draw();
+        setInterval(draw, 1000)
+    </script>
+</body>
+
+</html>

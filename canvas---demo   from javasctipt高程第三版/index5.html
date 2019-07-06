@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas width="1000" height="1000" id='canvas'></canvas>
+    <!-- 基本使用方法 -->
+    <script>
+        const canvas = document.querySelector('#canvas');
+        const context = canvas.getContext('2d');
+
+        /**
+         * @param c 2d对象
+         * @param n 几边形
+         * @param x 横坐标位置
+         * @param y 纵坐标位置
+         * @param r 半径
+         * @param angle 初始的旋转角度
+         * @param counterclockwise  顺时针or逆时针
+        */
+        function polygon(c, n, x, y, r, angle, counterclockwise) {
+            angle = angle || 0;
+            counterclockwise = counterclockwise || false;
+            c.moveTo(x + r * Math.sin(angle), y - r * Math.cos(angle));
+            var delta = 2 * Math.PI / n;
+            for (var i = 1; i < n; i++) {
+                angle += counterclockwise ? -delta : delta;
+                c.lineTo(x + r * Math.sin(angle), y - r * Math.cos(angle));
+            }
+            c.closePath();
+        }
+        context.save();
+        context.beginPath();
+
+        context.fillStyle = '#ccc'; // 设置填充色
+        context.strokeStyle = '#008'; // 设置线色
+        context.lineWidth = 5; // 线宽度
+        polygon(context, 5, 100, 100, 80, Math.PI / 4);
+        context.fill();
+        context.stroke();
+
+
+        context.beginPath();
+        context.restore();
+        context.save();
+        context.fillStyle = '#ccc'; // 设置填充色
+        context.strokeStyle = '#008'; // 设置线色
+        context.lineWidth = 10; // 线宽度
+        polygon(context, 4, 260, 100, 80, Math.PI / 4, true);
+        context.fill();
+        context.stroke();
+
+
+        context.beginPath();
+        context.restore();
+        context.save();
+        context.fillStyle = '#ccc'; // 设置填充色
+        context.strokeStyle = '#008'; // 设置线色
+        context.lineWidth = 7; // 线宽度
+        polygon(context, 6, 420, 100, 80, Math.PI / 4);
+        context.fill();
+        context.stroke();
+
+        
+        context.beginPath();
+        context.restore();
+        context.save();
+        context.fillStyle = '#ccc'; // 设置填充色
+        context.strokeStyle = '#008'; // 设置线色
+        context.lineWidth = 20; // 线宽度
+        polygon(context, 7, 580, 100, 80, Math.PI / 4);
+        context.fill();
+        context.stroke();
+
+
+        var imgUrl = canvas.toDataURL('image/png');
+        var image = document.createElement('img');
+        console.log(imgUrl);
+        image.src = imgUrl;
+        document.body.appendChild(image);
+    </script>
+</body>
+
+</html>
