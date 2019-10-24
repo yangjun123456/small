@@ -1,0 +1,66 @@
+<!-- Jquery-ui实现拖拽 -->
+<!-- <div class="draggable-ele" style="background-color: #000;width:100px;height:100px;position:absolute;left:0;top:0;">
+</div>
+<h1>Welcome to app!</h1>  -->
+
+<div class="level1">
+  <button class="video" (click)="switchShowComponent('video')">video视频组件</button>
+  <button class="iframe" (click)="switchShowComponent('appIframe')">iframe组件</button>
+  <button class="rxjs" (click)="switchShowComponent('rxjs')">rxjs组件</button>
+</div>
+
+
+<ng-template [ngIf]='currentShowComponent=="video"'>
+  <nav>
+    <ul>
+      <li style="cursor: pointer;" (click)='currentShowVideo("")'>
+        <button>清空当前页面所有</button>
+      </li>
+      <li style="cursor: pointer;" (click)='currentShowVideo("appVideoJs")'>
+        <button>videojs组件</button>
+      </li>
+      <li style="cursor: pointer;" (click)='currentShowVideo("appVideoJs1")'>
+        <button>videojs组件1</button>
+      </li>
+      <li style="cursor: pointer;" (click)='currentShowVideo("appVideoJs2")'>
+        <button>videojs组件2</button>
+      </li>
+      <li style="cursor: pointer;" (click)='currentShowVideo("appVideoJs3")'>
+        <button>videojs组件3</button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- 默认显示视频组件 -->
+  <div class="content">
+    <ng-template [ngIf]='videoShow==="appVideoJs"'>
+      <app-video [data]='"./assets/test.mp4"'></app-video>
+    </ng-template>
+    <ng-template [ngIf]='videoShow==="appVideoJs1"'>
+      <app-video [data]='"./assets/test.mp4"'></app-video>
+      <app-video [data]='"./assets/test.mp4"'></app-video>
+    </ng-template>
+    <ng-template [ngIf]='videoShow==="appVideoJs2"'>
+      <app-video [data]='"./assets/test.mp4"'></app-video>
+      <app-video [data]='"./assets/test.mp4"'></app-video>
+      <app-video [data]='"./assets/test.mp4"'></app-video>
+    </ng-template>
+    <ng-template [ngIf]='videoShow==="appVideoJs3"'>
+      <app-video [data]='"./assets/test.mp4"'></app-video>
+      <app-video [data]='"./assets/test.mp4"'></app-video>
+      <app-video [data]='"./assets/test.mp4"'></app-video>
+      <app-video [data]='"./assets/test.mp4"'></app-video>
+    </ng-template>
+    <ng-template [ngIf]='videoShow==="1"'>
+      <app-video [data]='"./assets/test.mp4"'></app-video>
+    </ng-template>
+  </div>
+</ng-template>
+
+<ng-template [ngIf]='currentShowComponent=="appIframe"'>
+  <app-iframe></app-iframe>
+</ng-template>
+
+<ng-template [ngIf]='currentShowComponent=="rxjs"'>
+  <app-rxjs></app-rxjs>
+</ng-template>
