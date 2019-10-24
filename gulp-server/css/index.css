@@ -1,0 +1,56 @@
+html,
+body,
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+.border-left {
+    border-left: 1px solid #E7E7EB;
+}
+
+.prompt-select {
+    position: absolute;
+    bottom: 5rem;
+    display: none;
+}
+
+.prompt-select .prompt-content {
+    background-color: #fff;
+    transition: opacity .15s linear;
+    display: block;
+    padding: 0;
+}
+
+.prompt-select .prompt-content ul {
+    font-size: 1.2rem;
+    padding: 0px;
+    text-align: center;
+}
+
+.prompt-select .prompt-content ul li {
+    background-color: #fff;
+    margin: 1px 0;
+    padding: 10px 5px;
+}
+
+.prompt-select .prompt-content::after {
+    content: ' ';
+    border: 10px solid transparent;
+    border-bottom-width: 0px;
+    border-top: 10px solid #fff;
+    position: absolute;
+    left: 50%;
+    bottom: -20px;
+    width: 20px;
+    height: 20px;
+    margin-left: -10px;
+}
+
+.evaluate-bar input[type='radio'] {
+    margin-right: 10px;
+}

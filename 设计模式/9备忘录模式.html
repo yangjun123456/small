@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<span id="tips">*</span><br>
+<textarea id="t1">
+</textarea>
+<script>
+
+/*备忘录模式：
+在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样就可以将该对象恢复到原先保存的状态*/
+
+/*function Originator(){
+	this.state = '';
+	this.memento = new Memento();
+}
+Originator.prototype.getState = function(){
+	return this.state;
+};
+Originator.prototype.setState = function(state){
+	this.state = state;  
+};
+Originator.prototype.createMemento = function(){
+	this.memento.setMemento(this.state);
+};
+Originator.prototype.restoreMemento = function(){
+	this.setState(this.memento.getMemento());
+};
+
+function Memento(){
+	this.state = [];
+}
+Memento.prototype.getMemento = function(){
+	return this.state.pop();
+};
+Memento.prototype.setMemento = function(state){
+	this.state.push(state);
+};
+
+var o1 = new Originator();
+o1.setState("状态1");
+console.log( "初始状态:"+o1.getState() );
+o1.createMemento(); 
+o1.setState("状态2");
+console.log( "改变后状态:"+o1.getState() ); 
+o1.createMemento();
+o1.setState("状态3");
+console.log( "改变后状态:"+o1.getState() );  
+o1.restoreMemento(); 
+console.log( "恢复后状态:"+o1.getState() ); 
+o1.restoreMemento(); 
+console.log( "恢复后状态:"+o1.getState() ); */
+
+function Originator(){
+	this.state = '';
+	this.memento = new Memento();
+}
+Originator.prototype.getState = function(){
+	return this.state;
+};
+Originator.prototype.setState = function(state){
+	this.state = state;  
+};
+Originator.prototype.createMemento = function(){
+	this.memento.setMemento(this.state);
+};
+Originator.prototype.restoreMemento = function(){
+	this.setState(this.memento.getMemento());
+};
+
+function Memento(){
+	this.state = [];
+}
+Memento.prototype.getMemento = function(){
+	return this.state.pop() || '';
+};
+Memento.prototype.setMemento = function(state){
+	this.state.push(state);
+};
+
+var tips = document.getElementById('tips');
+var t1 = document.getElementById('t1');
+var o1 = new Originator();
+t1.onkeydown = function(ev){
+	if(ev.keyCode == 83 && ev.altKey){
+		tips.style.display = 'none';
+		o1.createMemento();
+		o1.setState(this.value);
+	}
+	else if(ev.keyCode == 90 && ev.altKey){
+		o1.restoreMemento();
+		this.value = o1.getState();
+	}	
+};
+t1.oninput = function(){
+	tips.style.display = '';
+};
+
+</script>
+</body>
+</html>

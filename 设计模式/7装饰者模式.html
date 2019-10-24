@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<script>
+
+//装饰者模式
+	//动态给一个对象添加一些额外的职责，对结果进行进一步的装饰。
+
+/*function Foo(){
+	this.name = 'Hello';
+}
+function Bar(name){
+	this.name = name + ' JavaScript';
+}
+function Baz(name){
+	this.name = name + ' !!!';
+}
+
+var obj1 = new Foo();
+var obj2 = new Bar(obj1.name);
+var obj3 = new Baz(obj2.name);
+console.log(obj3.name);*/
+
+/*function Numbers(number){
+	this.number = number;
+}
+Numbers.prototype.get = function(){
+	return this.number;
+};
+function Milles(num){
+	this.number = this.set(num);
+}
+Milles.prototype.set = function(num){
+	var reg = /(?=(?!\b)(\d{3})+$)/g;
+	num = '' + num;
+	return num.replace(reg,',');
+};
+Milles.prototype.get = function(){
+	return this.number;
+};
+function Currency(number,curr){
+	this.number = this.set(number,curr);
+}
+Currency.prototype.set = function(number,curr){
+	curr = curr || '￥';
+	return curr + number;
+};
+Currency.prototype.get = function(){
+	return this.number;
+};
+
+var n1 = new Numbers(758945984);
+var m1 = new Milles(n1.get());
+var c1 = new Currency(m1.get());
+console.log(c1.get());
+var n2 = new Numbers(8965069056);
+var c1 = new Currency(n2.get(),'$');
+console.log(c1.get());*/
+</script>
+</body>
+</html>

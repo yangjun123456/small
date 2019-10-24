@@ -1,0 +1,39 @@
+body {
+    margin: 0px;
+}
+
+div#container {
+    /*background-color: darkgrey;*/
+}
+
+div#main_menu {
+
+    width: 400px;
+    height: 400px;
+    /*background-color: #5bc0de;*/
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+div#content_menu {
+
+    width: 1000px;
+    height: 400px;
+    /*background-color: #5bc0de;*/
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+div#backbtn{
+    width:120px;
+    height:120px;
+    left: 1200px;
+    bottom: -150px;
+    position:relative;
+}

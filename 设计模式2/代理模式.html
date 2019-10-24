@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>代理模式---图片预加载</title>
+</head>
+
+<body>
+    <script>
+        // 设置图片src
+        var myImage = (function () {
+            var imgNode = document.createElement('img');
+            document.body.appendChild(imgNode);
+            return {
+                setSrc: function (src) {
+                    imgNode.src = src;
+                }
+            }
+        })();
+
+        // 图片预加载代理
+        var proxyImage = function (callback) {
+            var img = new Image;
+
+            img.onload = function () {
+                // this指当前img标签
+                console.log(this.src);
+                console.log(1);
+                myImage.setSrc(this.src);
+                callback && callback();
+            }
+            return {
+                setSrc: function (src) {
+                    console.log(2);
+                    // myImage.setSrc('./img/index.jpg'); // 貌似是loading图片
+                    img.src = src; // 设置img的src路径
+                }
+            }
+        };
+
+        function aa() {
+            console.log('callback');
+        }
+
+        proxyImage(aa).setSrc('./img/a003-2M.gif');
+        setTimeout(() => {
+            proxyImage(aa).setSrc('./img/a004-2M.gif');
+        }, 1000)
+        setTimeout(() => {
+            proxyImage(aa).setSrc('./img/a005-2M.gif');
+        }, 2000)
+    </script>
+</body>
+
+</html>

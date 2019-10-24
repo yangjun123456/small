@@ -1,0 +1,109 @@
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+
+<handle-error></handle-error>
+
+<!-- <dashboard [ngStyle]="{'display':this.dashboardService.dashboardShowFlag ? 'block':'none'}" class="dashboard"></dashboard>
+<gear-panel [ngStyle]="{'display':this.gearPanelService.pedalShowFlag ? 'block':'none'}" class="pedal"></gear-panel>
+<obdscan *ngIf='this.obdscanService.Zdata.obdscanStatus' class="instrument"></obdscan>
+<multimeter class="appinmultimeter" *ngIf='this.multimeterService.Mdata.multimeterStatus'></multimeter> -->
+<common-prompt></common-prompt>
+
+
+
+<!--首页-->
+<!-- <div class="indexBg" *ngIf='indexBgFlag'>
+  <span></span>
+  <p>职校培训系统</p>
+  <p>VOCATIONAL SCHOOL TRAINING SYSTEM</p>
+</div> -->
+<!--登录封面-->
+<!-- <div class="loginPage" *ngIf='this.appService.loginFlag'>
+  <div class="loginBox">
+    <span class="logo"></span>
+    <div class="text">
+      <input #userID type="text" placeholder="身份证号码">
+      <span class="iconfont1 icon-iconfontwodeyouhuijuan"></span>
+      <span class="falseHints">{{loginPromptInfoUserName}}</span>
+      <hr>
+    </div>
+    <div class="password">
+      <input #password type="password" placeholder="登录密码">
+      <span class="iconfont1 icon-lock1"></span>
+      <span class="falseHints">{{loginPromptInfoPassWord}}</span>
+      <hr>
+    </div>
+    <span class="forgetPassword" (click)='forgetPasswordPage()'>忘记密码</span>
+    <button (click)="registerPage()" class="register">注册</button>
+    <button (click)="login(userID.value,password.value)">登录</button>
+  </div>
+</div> -->
+<!--注册页面-->
+<!-- <div class="registerPage" *ngIf='this.appService.registerFlag'>
+  <div class='courseselect-head'>
+    <span (click)="back()" class='return-home'>
+      < </span>
+    <title>注册</title>
+  </div>
+  <div class="registerBox">
+    <span class="logo">
+      <img src="{{appService.upLoadAvatar?appService.upLoadAvatar:'./assets/index/logo.png'}}" alt="">
+    </span>
+    <form>
+      <label for="headPortrait"></label>
+      <a>
+        上传头像
+        <input (change)="upLoad(avatar)" #avatar class="headPortrait" id="headPortrait" type="file">
+      </a>
+      <br>
+      <label for="name">姓名:</label>
+      <input (blur)="verificationRegister(name,'name')" #name id="name" type="text" placeholder="姓名由2-4位汉字组成">
+      <span>{{promptInfoName}}</span>
+      <br>
+      <label for="company">单位:</label>
+      <input #company id="company" type="text">
+      <span>{{promptInfoCompany}}</span>
+      <br>
+      <label for="position">职位:</label>
+      <input #position id="position" type="text">
+      <span>{{promptInfoPosition}}</span>
+      <br>
+      <label for="passWordID">密码:</label>
+      <input (blur)="verificationRegister(passWordID,'password')" #passWordID id="passWordID" type="text" placeholder="密码由8-12位数组或字母组成">
+      <span>{{promptInfoPassWord}}</span>
+      <br>
+      <label for="userID">身份证号:</label>
+      <input (blur)="verificationRegister(userNameID,'username')" #userNameID id="userID" type="text" placeholder="身份证号码由17或18位数字组成">
+      <span>{{promptInfoUserName}}</span>
+    </form>
+    <button (click)="register(name.value,company.value,position.value,passWordID.value,userNameID.value,avatar)">注册</button>
+  </div>
+</div> -->
+<!--忘记密码页面-->
+<div class="forgetPasswordPage" *ngIf='this.appService.forgetPassword'>
+  <div class=' courseselect-head-password '>
+    <span (click)="forgetPasswordBack()" class='return-home '>
+      < </span>
+    <title>忘记密码</title>
+  </div>
+  <div class="modify">
+    <form>
+      <label for="userID">身份证号:</label>
+      <input (blur)="verificationRegister(userNameID,'username')" #userNameID id="userID" type="text" placeholder="身份证号码由17或18位数字组成">
+      <span>{{promptInfoUserName}}</span>
+      <br>
+      <label for="passWordID">新密码:</label>
+      <input (blur)="verificationRegister(passWordID,'password')" #passWordID id="passWordID" type="text" placeholder="密码由8-12位数组或字母组成">
+      <span>{{promptInfoPassWord}}</span>
+      <br>
+
+      <label for="confirmPassWordID">再次输入密码:</label>
+      <input (blur)="verificationRegister(confirmPassWordID,'dubPassword',passWordID)" #confirmPassWordID id="confirmPassWordID"
+        type="text" placeholder="两次输入的密码必须一致">
+      <span>{{promptInfoDubPassWord}}</span>
+    </form>
+    <button (click)="ModifyPassword(userNameID.value,passWordID.value,confirmPassWordID.value)">提交</button>
+  </div>
+</div>

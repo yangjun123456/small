@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>下拉</p>
+  <div style="width:100px;height:200px;background:red;display:none"></div>
+</body>
+<script src="./src/assets/js/jquery-3.1.1.min.js"></script>
+<script>
+  $('p').click(function () {
+    $('div').slideDown('slow');
+  })
+
+</script>
+
+</html>

@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#div1{ width:100px; height:100px; background:red; position:absolute;}
+</style>
+<script src="jquery-3.2.1.js"></script>
+<!--<script src="jquery-ui.min.js"></script>-->
+<script>
+
+//$.fn.extend() -> 把方法挂在到JQ的原型对象下
+
+$.fn.extend({
+	draggable : function(opts){
+		//console.log(this);  -> $('#div1')
+		
+		var defaults = {
+			axis : '',
+			cursor : '',
+			cursorAt : ''
+		};
+		
+		var settings = $.extend( defaults , opts );
+		
+		var $elem = this;
+		var disX = 0;
+		var disY = 0;
+		var flag = true;
+		$elem[0]._able = true;
+		
+		if( $.type(opts) == 'string' ){
+			var methods = opts;
+			if(methods == 'disable'){
+				$elem[0]._able = false;
+			}
+			else if(methods == 'enable'){
+				$elem[0]._able = true;
+			}	
+		}
+		else if( $.type(opts) == 'object' ){
+			drag();
+		}
+		
+		function drag(){
+			$elem.on('mousedown',function(ev){
+				if(!$elem[0]._able){return;}
+				disX = ev.pageX - $elem.offset().left;
+				disY = ev.pageY - $elem.offset().top;
+				$(document).on('mousemove',function(ev){
+					if(flag){
+						flag = false;
+						$elem.trigger('myDragStart');
+					}
+					setCursor();
+					move(ev);
+				});
+				$(document).on('mouseup',function(){
+					cancelCursor();
+					$(this).off();
+					$elem.trigger('myDragEnd');
+					flag = true;
+				});
+				return false;
+			});
+		}
+		
+		function move(ev){
+			var L = ev.pageX - disX;
+			var T = ev.pageY - disY;
+			
+			if(settings.cursorAt){
+				var x = settings.cursorAt.left || 0;
+				var y = settings.cursorAt.top || 0;
+				L += disX + x;
+				T += disY + y;
+			}
+			
+			if(settings.axis == 'x'){
+				$elem.css('left',L);
+			}
+			else if(settings.axis == 'y'){
+				$elem.css('top',T);
+			}
+			else{
+				$elem.css('left',L);
+				$elem.css('top',T);
+			}
+		}
+		
+		function setCursor(){
+			if(settings.cursor){
+				$('body').css('cursor',settings.cursor);
+			}
+		}
+		
+		function cancelCursor(){
+			if(settings.cursor){
+				$('body').css('cursor','default');
+			}
+		}
+		
+	}
+});
+
+</script>
+</head>
+
+<body>
+<input id="input1" type="button" value="点击禁用">
+<input id="input2" type="button" value="点击可用">
+<div id="div1"></div>
+<script>
+
+//$('#div1').draggable();
+
+$('#div1').draggable({
+	//axis : 'y',
+	cursor : 'move',
+	cursorAt : { left : 30 , top : 30 }
+});
+
+$('#div1').on('myDragStart',function(){
+	console.log(1);
+});
+$('#div1').on('myDragEnd',function(){
+	console.log(2);
+});
+
+$('#input1').on('click',function(){
+	
+	$('#div1').draggable('disable');
+	
+});
+
+$('#input2').on('click',function(){
+	
+	$('#div1').draggable('enable');
+	
+});
+
+
+</script>
+</body>
+</html>

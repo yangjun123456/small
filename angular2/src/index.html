@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+
+  <style>
+    @font-face {
+      font-family: "iconfont";
+      src: url('iconfont.eot?t=1515549783814');
+      /* IE9*/
+      src: url('iconfont.eot?t=1515549783814#iefix') format('embedded-opentype'), /* IE6-IE8 */
+      url('data:application/x-font-woff;charset=utf-8;base64,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') format('woff'),
+      url('iconfont.ttf?t=1515549783814') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+      url('iconfont.svg?t=1515549783814#iconfont') format('svg');
+      /* iOS 4.1- */
+    }
+
+    .iconfont {
+      font-family: "iconfont" !important;
+      font-size: 24px;
+      color: #fff;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .iconfont1 {
+      font-family: "iconfont" !important;
+      font-size: 30px;
+      color: rgba(0, 0, 0, .5);
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .iconfont2 {
+      font-family: "iconfont" !important;
+      /*font-size: px;*/
+      color: blue;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .icon-iconfontwodeyouhuijuan:before {
+      content: "\e633";
+    }
+
+    .icon-lock:before {
+      content: "\e607";
+    }
+
+    .icon-guwenxiezuo:before {
+      content: "\e603";
+    }
+
+    .icon-setting:before {
+      content: "\e630";
+    }
+
+    .icon-gongjuxiang:before {
+      content: "\e643";
+    }
+
+    .icon-weibiaoti3:before {
+      content: "\e650";
+    }
+
+    .icon-lock1:before {
+      content: "\e6a6";
+    }
+
+    .icon-rotate:before {
+      content: "\e723";
+    }
+
+    .icon-screen:before {
+      content: "\e611";
+    }
+
+    .icon-active-center:before {
+      content: "\e61d";
+    }
+
+    .icon-enlarge:before {
+      content: "\e741";
+    }
+
+    .icon-secondhandhouse-copy:before {
+      content: "\e600";
+    }
+
+  </style>
+  <meta name="description" content="<%= htmlWebpackPlugin.options.title %>">
+
+
+
+  <!-- base url -->
+  <!--<base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">-->
+
+
+  <script src="./assets/js/jquery-3.1.1.min.js"></script>
+  <script src="./assets/js/jquery-ui.min.js"></script>
+  <script src="./assets/js/jquery.ui.touch-punch.min.js"></script>
+  <script src="./assets/js/jquery.nicescroll.min.js"></script>
+  <script src="./assets/js/perfect_scrollbar/perfect-scrollbar.min.js"></script>
+
+  <link rel="stylesheet" href="./assets/js/bootstrap/bootstrap.min.css">
+  <script src="./assets/js/bootstrap/bootstrap.min.js"></script>
+
+  <script>
+    // window['adaptive'].desinWidth = 854;
+    // window['adaptive'].baseFont = 12;
+    // window['adaptive'].init();
+
+    // console.log(window.getComputedStyle(document.body).fontSize)
+    //字体大小：默认值是16px，每一个浏览器有可能不一样的
+    var dw = 854; //设计稿的宽
+    //在移动端就直接这样写就可以
+    $('html').css('fontSize', dw / (document.documentElement.clientWidth || document.body.clientWidth) *
+      100 + "px")
+
+    console.log(document.documentElement.clientWidth || document.body.clientWidth)
+    //在PC端的时候加上屏幕大小改变的问题
+    window.onresize = function () {
+      $('html').css('fontSize', 100 / (dw / (document.documentElement.clientWidth || document.body.clientWidth)) +
+        "px")
+    }
+
+  </script>
+
+  <!--[if IE]>
+        <script src="./assets/js/shims_for_IE.prod.js"></script>
+    <![endif]-->
+  <script src="./assets/js/web-animations.min.js"></script>
+  <!-- 平台通信  -->
+  <script src="./assets/js/APIFunctions.js"></script>
+  <script src="./assets/js/APIWrapper.js"></script>
+  <script src="./assets/js/socket.io.js"></script>
+
+
+  </script>
+</head>
+
+<body>
+
+
+  <support-app>
+  <img src="./assets/images/index.jpg">
+  </support-app>
+
+
+
+  <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
+    <!-- Webpack Dev Server reload -->
+    <script src="/webpack-dev-server.js"></script>
+    <% } %>
+
+
+</body>
+<script>
+  document.oncontextmenu = function (e) {
+    e.preventDefault();
+  };
+
+</script>
+
+</html>

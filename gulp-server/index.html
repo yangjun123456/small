@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html style='font-size:14px;'>
+
+<head>
+    <!-- 禁止HTML缓存 -->
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
+    <meta http-equiv="pragma" contenq="no-cache">
+    <meta http-equiv="expires" content="-1">
+
+    <!-- 移动设备支持 -->
+    <meta name="format-detection" content="telephone=no, address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <title>123</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="Font-Awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/swiper-3.3.1.min.css">
+    <link rel="stylesheet" href="css/mobiscroll.custom-3.0.0-beta2.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery.2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/mobiscroll.custom-3.0.0-beta2.min.js"></script>
+    <script src="js/swiper-3.3.1.min.js"></script>
+    <script src="js/iscroll.js"></script>
+    <!-- <script src="js/adaptive-version.js"></script> -->
+    <!-- <script>
+        window['adaptive'].desinWidth = 750;
+        window['adaptive'].baseFont = 12;
+        window['adaptive'].init();
+    </script> -->
+    <script src="js/mui.min.js"></script>
+    <!-- <script src="js/new_file.js"></script> -->
+</head>
+
+<body style="background: #f7f7f7;font-size:16px;">
+    <div style='position:fixed;top:0;left:0;width:100%;'>
+        <div class='title' style='position:absolute;left:0;right:0;top:0;background:#343337;height:3rem;color:#fff;line-height:3rem;'>
+            <span class='col-xs-4 weixintitle' style='text-align:left;font-size:1.2rem;display:block;'>
+                <span class='icon-arrow-left'></span> 微信
+            </span>
+
+            <span class='col-xs-4 return1' style='text-align:left;font-size:1.2rem;display:none;'>
+                <span class='icon-arrow-left'></span> 返回</span>
+            </span>
+
+            <span class='col-xs-4 return2' style='text-align:left;font-size:1.2rem;display:none;'>
+                <span class='icon-arrow-left'></span> 返回
+            </span>
+
+            <span class='col-xs-4' style='text-align:center;font-size:1.2rem;'></span>
+            <span class='col-xs-4 head-touxiang-block' style='text-align:right;font-size:1.2rem;'>
+                <span class='glyphicon glyphicon-user' style='font-size:1.4rem;'></span>
+            </span>
+            <span class='col-xs-4 head-touxiang-none' style='text-align:right;font-size:1.2rem;display:none;'></span>
+        </div>
+    </div>
+
+
+    <div class='content' style='position:fixed;top:3rem;bottom:4rem;left:0;background:#e5e5e5;width:100%;overflow-y:auto;'>
+        <div class='content-main' style='overflow-y:auto;/*position:absolute;*/text-align: center;'>
+            <!-- <img src="./images/testImages/test.png" style="width: 900px;margin: 0 auto;height: 350px;" alt=""> -->
+            <img src="./images/testImages/testpng1.png" style="width: 900px;margin: 0 auto;height: 350px;" alt="">
+            <!-- <img src="./images/testImages/testpng2.png" style="width: 900px;margin: 0 auto;height: 350px;" alt=""> -->
+            <!-- <img src="./images/testImages/testpng3.jpg" style="width: 900px;margin: 0 auto;height: 350px;" alt=""> -->
+            <!-- <img src="./images/testImages/testpng4.png" style="width: 900px;margin: 0 auto;height: 350px;" alt=""> -->
+            <!-- <img src="./images/testImages/testpng5.jpg" style="width: 900px;margin: 0 auto;height: 350px;" alt=""> -->
+            <!-- <img src="./images/testImages/testpng6.png" style="width: 900px;margin: 0 auto;height: 350px;" alt=""> -->
+            <!-- <img src="./images/testImages/testpng7.png" style="width: 900px;margin: 0 auto;height: 350px;" alt=""> -->
+        </div>
+    </div>
+    <div class='menu-bar' style='position:fixed;bottom:0;background:#fff;width:100%;height:4rem;line-height:4rem;text-align:center;'>
+        <span class='col-xs-3 toggleInput' style='padding:0;background:url(images/keyboard.png) no-repeat center;background-size:50%;height:100%;'></span>
+        <span class='col-xs-3 border-left mycourse' style='padding:0;'>课程</span>
+        <span class='col-xs-3 border-left hudong' style='padding:0;'>我的互动</span>
+        <span class='col-xs-3 border-left gerenzhongxin' style='padding:0;'>个人中心</span>
+        <input type="text" class='input col-xs-9' style='display:none;'>
+
+    </div>
+
+    <!-- 菜单栏列表弹框start -->
+    <div class='prompt-select' style='width:100%;'></div>
+    <!-- 菜单栏列表弹框end -->
+
+    <!-- <video width="" height="" autoplay='autoplay' style='position:absolute;left:0;top:0;width:660px;height:900px;background:red;'
+        src='demo1.mp4'>
+    </video> -->
+    <!-- <img src="demo1.gif" class='image-test' style='width:1000px;height:1000px;position:absolute;' alt=""> -->
+
+    <script src="js/index.js"></script>
+    <script>
+        // $('video')[0].onended = function () {
+        //     alert(1);
+        // }
+        $.ajax({
+            'type': 'Get',
+            'url': '/api/yuncourse/page/exam_get',
+            'data': {
+                "ID": '22'
+            },
+            'dataType': 'json',
+            'success': this.successCallBack,
+            'error': function (err) {
+                console.log(err);
+            }
+        });
+    </script>
+    <!-- <script>
+        var test = true;
+        setInterval(() => {
+            if (test) {
+                $('.image-test').remove();
+                $('body').append(
+                    "<img src=\"demo02.gif\" class='image-test' style='width:1000px;height:1000px;position:absolute;' alt=\"\">"
+                );
+                test = false;
+            } else {
+                $('.image-test').remove();
+                $('body').append(
+                    "<img src=\"u28.jpg\" class='image-test' style='width:1000px;height:1000px;position:absolute;' alt=\"\">"
+                );
+                test = true;
+            }
+        }, 3000)
+    </script> -->
+
+</body>
+
+</html>

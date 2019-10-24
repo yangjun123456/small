@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body,
+        div,
+        span,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        ul,
+        ol,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+
+        #div1 {
+            position: absolute;
+            left: 0;
+            top: 50px;
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            border-radius: 50%;
+            box-shadow: 0px 00px 30px 10px green;
+            text-align: center;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="./jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+    <button class="animate1">animate1</button>
+    <button class="animate2">animate2</button>
+    <button class="animate3">animate3</button>
+    <button class="animate4">animate4</button>
+    <button class="recordAnimate">recordAnimate</button>
+    <div id='div1'></div>
+    <script>
+        var animateBtn1 = document.getElementsByClassName('animate1')[0];
+        var animateBtn2 = document.getElementsByClassName('animate2')[0];
+        var animateBtn3 = document.getElementsByClassName('animate3')[0];
+        var animateBtn4 = document.getElementsByClassName('animate4')[0];
+        var recordAnimate = document.getElementsByClassName('recordAnimate')[0];
+
+        var ary = [animateBtn1, animateBtn2, animateBtn3, animateBtn4];
+        var recordOperatorAry = [];
+
+        function animate1(aa) {
+            console.log(aa);
+            $('#div1').stop(true, true).animate({
+                top: "100px",
+                left: "100px"
+            }, 1000);
+        }
+
+        function animate2(bb) {
+            console.log(bb);
+            $('#div1').stop(true, true).animate({
+                top: "50px",
+                left: "150px"
+            }, 1000);
+        }
+
+        function animate3(cc) {
+            console.log(cc);
+            $('#div1').stop(true, true).animate({
+                opacity: 0.5,
+                width: '50px',
+                height: '50px'
+            }, 1000);
+        }
+
+        function animate4(dd) {
+            console.log(dd);
+            $('#div1').stop(true, true).animate({
+                opacity: 1,
+                width: '30px',
+                height: '30px'
+            }, 1000);
+        }
+
+        ary.map((item, itemIndex) => {
+            item.onclick = function () {
+                console.log(itemIndex);
+                let aa = `${'animate'+(itemIndex+1)}`;
+                window[aa]('调用' + itemIndex);
+                recordOperatorAry.push(window[aa]);
+                console.log(recordOperatorAry);
+            }
+        })
+        recordAnimate.onclick = () => {
+            recordOperatorAry.map((item, itemIndex) => {
+                console.log(item);
+                item();
+            })
+        }
+    </script>
+</body>
+
+</html>

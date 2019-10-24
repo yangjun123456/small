@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#div1{ width:200px; height:200px; border:1px #000000 solid;}
+</style>
+</head>
+
+<body>
+<div id="div1">aaa</div>
+<script>
+
+//观察者模式(发布订阅模式)
+	//观察者模式中，一个被观察者管理所有相依于它的观察者物件，并且在本身的状态改变时主动发出通知。
+
+/*function Foo(){
+}
+Foo.prototype.bind = function(obj,events,fn){  
+	obj.listeners = obj.listeners || {};
+	obj.listeners[events] = obj.listeners[events] || [];
+	obj.listeners[events].push(fn);
+};
+Foo.prototype.fire = function(obj,events){
+	for(var i=0;i<obj.listeners[events].length;i++){
+		obj.listeners[events][i]();
+	}
+};
+var div1 = document.getElementById('div1');
+var obj = new Foo();
+
+obj.bind(div1,'show',function(){
+	console.log(123);
+});
+obj.bind(div1,'show',function(){
+	console.log(456);
+});
+obj.fire(div1,'show');*/
+
+function Foo(){
+}
+Foo.prototype.bind = function(obj,events,fn){
+	obj.listeners = obj.listeners || {};
+	obj.listeners[events] = obj.listeners[events] || [];
+	obj.listeners[events].push(fn);
+};
+Foo.prototype.fire = function(obj,events){
+	var args = Array.prototype.slice.call(arguments).slice(2);
+	for(var i=0;i<obj.listeners[events].length;i++){
+		obj.listeners[events][i].apply(obj,args);
+	}
+};
+
+var div1 = document.getElementById('div1');
+function ScaleMethod(elem){
+	this.elem = elem;
+	this.scale();
+	this.wheel();
+}
+ScaleMethod.prototype.scale = function(){
+	var downX = 0;
+	var downY = 0;
+	var downW = 0;
+	var downH = 0;
+	var This = this;
+	this.elem.onmousedown = function(ev){
+		downX = ev.pageX;
+		downY = ev.pageY;
+		downW = This.elem.offsetWidth;
+		downH = This.elem.offsetHeight;
+		document.onmousemove = function(ev){
+			This.elem.style.width = ev.pageX - downX + downW + 'px';
+			This.elem.style.height = ev.pageY - downY + downH + 'px';
+			obj.fire(This,'scale',This.elem.offsetWidth,This.elem.offsetHeight);
+		};
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		};
+		return false;
+	};
+};
+ScaleMethod.prototype.wheel = function(){
+	var This = this;
+	this.elem.onmousewheel = function(ev){
+		if(ev.wheelDelta > 0){
+			this.style.height = this.offsetHeight - 10 + 'px';
+		}
+		else{
+			this.style.height = this.offsetHeight + 10 + 'px';
+		}
+		obj.fire(This,'scale',This.elem.offsetWidth,This.elem.offsetHeight);
+	};
+};
+var obj = new Foo();
+var s1 = new ScaleMethod(div1);
+obj.bind(s1,'scale',function(w,h){
+	div1.innerHTML = w + ',' + h;
+});
+
+</script>
+</body>
+</html>

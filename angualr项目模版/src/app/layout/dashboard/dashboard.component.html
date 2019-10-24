@@ -1,0 +1,127 @@
+<!--用户管理页面-->
+<div class='user-management'>
+
+  <div class="card mb-3">
+    <div class="card-header" style='background-color:#fff;'>用户管理</div>
+    <div class='user-management-operater' style='margin: 20px 0 0px 20px;'>
+      <button type="button" class="btn btn-sm btn-secondary" (click)='add("add")'>新增</button>
+      <button type="button" class="btn btn-sm btn-secondary" (click)='delete()'>删除</button>
+    </div>
+    <div class="card-block table-responsive">
+      <table class="table table-bordered">
+        <thead class="thead-default">
+          <tr>
+            <th><input type="checkbox" (click)='allSelect()' /></th>
+            <th>用户ID</th>
+            <th>用户名</th>
+            <th>账户名</th>
+            <th>属性</th>
+            <th>权限</th>
+            <th>手机号</th>
+            <th>所属经销商</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody *ngIf='user.length'>
+          <tr *ngFor='let cont of user'>
+            <th class='checkbox' scope="row">
+              <input id={{cont.id}} (click)='radioSelect()' type="checkbox" />
+            </th>
+            <th class='numberId'>{{cont.userId}}</th>
+            <th class='userName'>{{cont.userName}}</th>
+            <th class='accountName'>{{cont.accountName}}</th>
+            <th class='property'>{{cont.property}}</th>
+            <th class='jurisdiction'>{{cont.jurisdiction}}</th>
+            <th class='phoneNumber'>{{cont.phoneNumber}}</th>
+            <th class='dealer'>{{cont.dealer}}</th>
+            <th class='operator'>
+              <button type="button" class="btn btn-sm btn-secondary" (click)='add("edit")' name={{cont.id}}>编辑</button>
+              <button type="button" class="btn btn-sm btn-secondary" (click)='changePassword()' name={{cont.id}}>修改密码</button>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!--新增/编辑弹框-->
+  <!--<div class='add-user-shade' style='position:absolute;left:0;top:0;width:100%;height:100%;'></div>-->
+  <div class='add-user' *ngIf='promptAddUser=="1"'>
+    <div class="modal-header">
+      <h4 class="modal-title">新增/编辑</h4>
+      <button type="button" class="close" aria-label="Close" (click)="addSure('close')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+    </div>
+    <div class="modal-body" style='margin-left:30px;'>
+      <label for="" style='display:block;'>用户名&nbsp;
+                <input class="form-control edit-username" style='position:absolute;right:280px;' placeholder="请输入用户名">
+                <!--<input type="text" class='edit-username' style='position:absolute;right:280px;' placeholder="请输入用户名"/>-->
+                </label>
+      <label for="" style='display:block;'>账户名&nbsp;<input class="form-control edit-accountName" style='position:absolute;right:280px;' placeholder="请输入账户名"/></label>
+      <label for="" style='display:block;'>手机号&nbsp;<input class='form-control edit-phoneNumber' style='position:absolute;right:280px;' placeholder="请输入手机号"/></label>
+      <label for="" style='display:block;'>属性&nbsp;&nbsp;&nbsp;
+                <select class='edit-property form-control' name="" id="" defaultValue='jishi' style='width:201px;position:absolute;right:280px;'>
+                    <option value="jishi">技师</option>
+                    <option value="jishi1">技师</option>
+                    <option value="jishi2">技师</option>
+                </select>
+            </label>
+      <label for="" style='display:block;'>权限&nbsp;&nbsp;&nbsp;
+                <select class='edit-jurisdiction form-control' name="" id="" defaultValue='commonUser' style='width:201px;position:absolute;right:280px;'>
+                    <option value="commonUser">普通用户</option>
+                    <option value="commonUser1">普通用户</option>
+                    <option value="commonUser2">普通用户</option>
+                </select>
+            </label>
+      <label for="" style='display:block;'>所属店铺&nbsp;
+                <select class='edit-dealer form-control' name="" id="" defaultValue='commonUser' style='width:201px;position:absolute;right:280px;'>
+                    <option value="commonUser">普通用户</option>
+                    <option value="commonUser1">普通用户</option>
+                    <option value="commonUser2">普通用户</option>
+                </select>
+            </label>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-sm btn-secondary" (click)="addSure('sure')">确定</button>
+      <button type="button" class="btn btn-sm btn-secondary" (click)="addSure('close')">关闭</button>
+    </div>
+  </div>
+
+  <!--修改密码弹框-->
+
+  <div class='change-password' *ngIf='promptChangePassword=="1"'>
+    <div class="modal-header">
+      <h4 class="modal-title">修改密码</h4>
+      <button type="button" class="close" aria-label="Close" (click)="changePasswordSure('close')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+    </div>
+    <div class="modal-body" style='margin-left:30px;'>
+      <label for="" style='display:block;'>账户名&nbsp;<input class='form-control edit-username' style='position:absolute;right:280px;outline:none;border:none;' readonly='true'/></label>
+      <label for="" style='display:block;'>姓名&nbsp;<input class='form-control edit-accountName' style='position:absolute;right:280px;outline:none;border:none;' readonly='true'/></label>
+      <label for="" style='display:block;'>重置密码&nbsp;<input class='form-control edit-phoneNumber' style='position:absolute;right:280px;' placeholder="请输入6位数密码"/></label>
+      <label for="" style='display:block;'>确认密码<input class='form-control edit-property' style='position:absolute;right:280px;' placeholder="请输入6位数密码"/></label>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-sm btn-secondary" (click)="changePasswordSure('sure')">确定</button>
+      <button type="button" class="btn btn-sm btn-secondary" (click)="changePasswordSure('close')">关闭</button>
+    </div>
+  </div>
+
+  <input type="text" id="name" class="form-control" required minlength="4" maxlength="24" name="newName" [(ngModel)]="hero.name"
+    #newName="ngModel">
+
+  <div *ngIf="newName.errors && (newName.dirty || newName.touched)" class="alert alert-danger">
+    <div [hidden]="!newName.errors.required">
+      newName is required
+    </div>
+    <div [hidden]="!newName.errors.minlength">
+      newName must be at least 4 characters long.
+    </div>
+    <div [hidden]="!newName.errors.maxlength">
+      newName cannot be more than 24 characters long.
+    </div>
+  </div>
+
+</div>

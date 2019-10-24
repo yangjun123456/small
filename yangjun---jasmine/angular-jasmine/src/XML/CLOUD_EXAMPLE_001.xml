@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fault>
+    <metadata>
+        <schema>XCJ</schema>
+        <schemaversion>1.0</schemaversion>
+    </metadata>
+    <name>制冷系统检修</name>
+    <courseNumber>CLOUD_EXAMPLE_001</courseNumber>
+    <type>emu</type>
+    <types>emuCourseWare</types>
+    <purpose>2018新版云课堂xml</purpose>
+    <require>无</require>
+    <keyword>制冷系统检修</keyword>
+    <language>中文</language>
+    <version>V0.1</version>
+    <description>无</description>
+    <client>PC</client>
+	<!-- 总分 -->
+    <sumScore>100</sumScore>
+	<!-- 通过条件 -->
+    <passCondition>60</passCondition>
+	<!-- 完成条件 -->
+    <completeCondition>60</completeCondition>
+    <entry>index.html</entry>
+    <progresses>
+    </progresses>
+    <questions>
+		<question catalog="cases-based" description="案例导入测评" id="cases-based" remark="">
+			<question description="当前环境温度为多少度？" id="cases-based_001" type="1">
+				<option id="cases-based_001_p1" description="18度" isRight="0"></option>
+				<option id="cases-based_001_p2" description="40度" isRight="1"></option>
+				<option id="cases-based_001_p3" description="30度" isRight="0"></option>
+				<option id="cases-based_001_p4" description="25度" isRight="0"></option>
+			</question>
+			<question description="关于空调出风口温度测试，下面哪个描述是正确的？" id="cases-based_002" type="1">
+				<option id="cases-based_002_p1" description="控制制冷置于最小挡位，温度计深入出风口后测试 " isRight="0"></option>
+				<option id="cases-based_002_p2" description="空调出风口置于最大挡位，关闭车门测量出风口温度 " isRight="0"></option>
+				<option id="cases-based_002_p3" description="鼓风机最大、制冷最大、车门和机盖打开后测量出风口温度" isRight="1"></option>
+				<option id="cases-based_002_p4" description="鼓风机最大、制冷最大、车门和机盖打开后测量驾驶舱中心位置温度" isRight="0"></option>
+			</question>
+			<question description="当前故障现象描述正确的是哪项？" id="cases-based_003" type="1">
+				<option id="cases-based_003_p1" description="空调完全失去制冷效果" isRight="0"></option>
+				<option id="cases-based_003_p2" description="空调制冷不良" isRight="1"></option>
+				<option id="cases-based_003_p3" description="压缩机不工作" isRight="0"></option>
+				<option id="cases-based_003_p4" description="鼓风机不转 " isRight="0"></option>
+			</question>
+			<question description="关于空调系统泄漏下面哪些说法是正确的？" id="cases-based_004" type="2">
+				<option id="cases-based_004_p1" description="当系统发生泄漏时可以使用肥皂水对管路接口进行检查" isRight="0"></option>
+				<option id="cases-based_004_p2" description="在各个空调检漏方法中使用电子冷媒检漏仪的方式准备工作最少" isRight="1"></option>
+				<option id="cases-based_004_p3" description="荧光检漏发对冷媒检漏最直观" isRight="0"></option>
+				<option id="cases-based_004_p4" description="系统保压测试泄漏对微小泄漏点检测不明显  " isRight="1"></option>
+			</question>
+		</question>
+		<question catalog="information" description="信息资讯测评" id="information" remark="">
+			<question description="汽车空调根据控制方式分为哪两种类型information？" id="information_001" type="1">
+				<option id="information_001_p1" description="可变排量空调和定排量空调系统" isRight="0"></option>
+				<option id="information_001_p2" description="自动空调和手动空调" isRight="1"></option>
+				<option id="information_001_p3" description="传统空调系统和新能源空调系统" isRight="0"></option>
+				<option id="information_001_p4" description="涡旋式空调系统和斜盘式空调系统" isRight="0"></option>
+			</question>
+			<question description="关于膨胀阀下面哪个描述是正确的？" id="information_002" type="1">
+				<option id="information_002_p1" description="膨胀阀位于蒸发箱出口 " isRight="0"></option>
+				<option id="information_002_p2" description="膨胀阀位于压缩机出口 " isRight="0"></option>
+				<option id="information_002_p3" description="膨胀阀有防止液击的作用" isRight="1"></option>
+				<option id="information_002_p4" description="膨胀阀有储存制冷剂的作用" isRight="0"></option>
+			</question>
+			<question description="在制冷剂回收机进行制冷剂回收时，下面说法正确的是？" id="information_003" type="1">
+				<option id="information_003_p1" description="空调完全失去制冷效果" isRight="0"></option>
+				<option id="information_003_p2" description="空调制冷不良 " isRight="1"></option>
+				<option id="information_003_p3" description="压缩机不工作" isRight="0"></option>
+				<option id="information_003_p4" description="鼓风机不转  " isRight="0"></option>
+			</question>
+			<question description="关于空调系统泄漏下面哪些说法是正确的？" id="information_004" type="2">
+				<option id="information_004_p1" description="当系统发生泄漏时可以使用肥皂水对管路接口进行检查" isRight="1"></option>
+				<option id="information_004_p2" description="在各个空调检漏方法中使用电子冷媒检漏仪的方式准备工作最少" isRight="1"></option>
+				<option id="information_004_p3" description="荧光检漏发对冷媒检漏最直观" isRight="0"></option>
+				<option id="information_004_p4" description="系统保压测试泄漏对微小泄漏点检测不明显  " isRight="0"></option>
+			</question>
+		</question>
+		<question catalog="plan" description="信息资讯测评" id="plan" remark="">
+			<question description="汽车空调根据控制方式分为哪两种类型plan？" id="plan_001" type="1">
+				<option id="plan_001_p1" description="可变排量空调和定排量空调系统" isRight="0"></option>
+				<option id="plan_001_p2" description="自动空调和手动空调" isRight="1"></option>
+				<option id="plan_001_p3" description="传统空调系统和新能源空调系统" isRight="0"></option>
+				<option id="plan_001_p4" description="涡旋式空调系统和斜盘式空调系统" isRight="0"></option>
+			</question>
+			<question description="关于膨胀阀下面哪个描述是正确的？" id="plan_002" type="1">
+				<option id="plan_002_p1" description="膨胀阀位于蒸发箱出口 " isRight="0"></option>
+				<option id="plan_002_p2" description="膨胀阀位于压缩机出口 " isRight="0"></option>
+				<option id="plan_002_p3" description="膨胀阀有防止液击的作用" isRight="1"></option>
+				<option id="plan_002_p4" description="膨胀阀有储存制冷剂的作用" isRight="0"></option>
+			</question>
+			<question description="在制冷剂回收机进行制冷剂回收时，下面说法正确的是？" id="plan_003" type="1">
+				<option id="plan_003_p1" description="空调完全失去制冷效果" isRight="0"></option>
+				<option id="plan_003_p2" description="空调制冷不良 " isRight="1"></option>
+				<option id="plan_003_p3" description="压缩机不工作" isRight="0"></option>
+				<option id="plan_003_p4" description="鼓风机不转  " isRight="0"></option>
+			</question>
+			<question description="关于空调系统泄漏下面哪些说法是正确的？" id="plan_004" type="2">
+				<option id="plan_004_p1" description="当系统发生泄漏时可以使用肥皂水对管路接口进行检查" isRight="1"></option>
+				<option id="plan_004_p2" description="在各个空调检漏方法中使用电子冷媒检漏仪的方式准备工作最少" isRight="1"></option>
+				<option id="plan_004_p3" description="荧光检漏发对冷媒检漏最直观" isRight="0"></option>
+				<option id="plan_004_p4" description="系统保压测试泄漏对微小泄漏点检测不明显  " isRight="0"></option>
+			</question>
+		</question>
+		<question catalog="operator" description="信息资讯测评" id="operator" remark="">
+			<question description="汽车空调根据控制方式分为哪两种类型operator？" id="operator_001" type="1">
+				<option id="operator_001_p1" description="可变排量空调和定排量空调系统" isRight="0"></option>
+				<option id="operator_001_p2" description="自动空调和手动空调" isRight="1"></option>
+				<option id="operator_001_p3" description="传统空调系统和新能源空调系统" isRight="0"></option>
+				<option id="operator_001_p4" description="涡旋式空调系统和斜盘式空调系统" isRight="0"></option>
+			</question>
+			<question description="关于膨胀阀下面哪个描述是正确的？" id="operator_002" type="1">
+				<option id="operator_002_p1" description="膨胀阀位于蒸发箱出口 " isRight="0"></option>
+				<option id="operator_002_p2" description="膨胀阀位于压缩机出口 " isRight="0"></option>
+				<option id="operator_002_p3" description="膨胀阀有防止液击的作用" isRight="1"></option>
+				<option id="operator_002_p4" description="膨胀阀有储存制冷剂的作用" isRight="0"></option>
+			</question>
+			<question description="在制冷剂回收机进行制冷剂回收时，下面说法正确的是？" id="operator_003" type="1">
+				<option id="operator_003_p1" description="空调完全失去制冷效果" isRight="0"></option>
+				<option id="operator_003_p2" description="空调制冷不良 " isRight="1"></option>
+				<option id="operator_003_p3" description="压缩机不工作" isRight="0"></option>
+				<option id="operator_003_p4" description="鼓风机不转  " isRight="0"></option>
+			</question>
+			<question description="关于空调系统泄漏下面哪些说法是正确的？" id="operator_004" type="2">
+				<option id="operator_004_p1" description="当系统发生泄漏时可以使用肥皂水对管路接口进行检查" isRight="1"></option>
+				<option id="operator_004_p2" description="在各个空调检漏方法中使用电子冷媒检漏仪的方式准备工作最少" isRight="1"></option>
+				<option id="operator_004_p3" description="荧光检漏发对冷媒检漏最直观" isRight="0"></option>
+				<option id="operator_004_p4" description="系统保压测试泄漏对微小泄漏点检测不明显  " isRight="0"></option>
+			</question>
+		</question>
+		<question catalog="check" description="信息资讯测评" id="check" remark="">
+			<question description="汽车空调根据控制方式分为哪两种类型check？" id="check_001" type="1">
+				<option id="check_001_p1" description="可变排量空调和定排量空调系统" isRight="0"></option>
+				<option id="check_001_p2" description="自动空调和手动空调" isRight="1"></option>
+				<option id="check_001_p3" description="传统空调系统和新能源空调系统" isRight="0"></option>
+				<option id="check_001_p4" description="涡旋式空调系统和斜盘式空调系统" isRight="0"></option>
+			</question>
+			<question description="关于膨胀阀下面哪个描述是正确的？" id="check_002" type="1">
+				<option id="check_002_p1" description="膨胀阀位于蒸发箱出口 " isRight="0"></option>
+				<option id="check_002_p2" description="膨胀阀位于压缩机出口 " isRight="0"></option>
+				<option id="check_002_p3" description="膨胀阀有防止液击的作用" isRight="1"></option>
+				<option id="check_002_p4" description="膨胀阀有储存制冷剂的作用" isRight="0"></option>
+			</question>
+			<question description="在制冷剂回收机进行制冷剂回收时，下面说法正确的是？" id="check_003" type="1">
+				<option id="check_003_p1" description="空调完全失去制冷效果" isRight="0"></option>
+				<option id="check_003_p2" description="空调制冷不良 " isRight="1"></option>
+				<option id="check_003_p3" description="压缩机不工作" isRight="0"></option>
+				<option id="check_003_p4" description="鼓风机不转  " isRight="0"></option>
+			</question>
+			<question description="关于空调系统泄漏下面哪些说法是正确的？" id="check_004" type="2">
+				<option id="check_004_p1" description="当系统发生泄漏时可以使用肥皂水对管路接口进行检查" isRight="1"></option>
+				<option id="check_004_p2" description="在各个空调检漏方法中使用电子冷媒检漏仪的方式准备工作最少" isRight="1"></option>
+				<option id="check_004_p3" description="荧光检漏发对冷媒检漏最直观" isRight="0"></option>
+				<option id="check_004_p4" description="系统保压测试泄漏对微小泄漏点检测不明显  " isRight="0"></option>
+			</question>
+		</question>
+    </questions>
+	<!-- 题目分数 -->
+	<scores>
+		<!-- 案例导入测评答案 -->
+		<score type="question" id="q01" hid="cases-based_001" rate="1" kp="">
+			<option>cases-based_001_p2</option>
+		</score>
+		<score type="question" id="q02" hid="cases-based_002" rate="5" kp="">
+			<option>cases-based_002_p3</option>
+		</score>
+		<score type="question" id="q03" hid="cases-based_003" rate="1" kp="">
+			<option>cases-based_003_p2</option>
+		</score>
+		<score type="question" id="q04" hid="cases-based_004" rate="2" kp="">
+			<option>cases-based_004_p2</option>
+			<option>cases-based_004_p4</option>
+		</score>
+		<!-- 案例导入测评答案 -->
+		<score type="question" id="q05" hid="information_001" rate="2" kp="">
+			<option>information_001_p2</option>
+		</score>
+		<score type="question" id="q06" hid="information_002" rate="1" kp="">
+			<option>information_002_p3</option>
+		</score>
+		<score type="question" id="q07" hid="information_003" rate="1" kp="">
+			<option>information_003_p2</option>
+		</score>
+		<score type="question" id="q08" hid="information_004" rate="1" kp="">
+			<option>information_004_p1</option>
+			<option>information_004_p2</option>
+		</score>
+		<!-- 制定计划测评答案 -->
+		<score type="question" id="q09" hid="plan_001" rate="2" kp="">
+			<option>plan_001_p2</option>
+		</score>
+		<score type="question" id="q10" hid="plan_002" rate="1" kp="">
+			<option>plan_002_p3</option>
+		</score>
+		<score type="question" id="q11" hid="plan_003" rate="1" kp="">
+			<option>plan_003_p2</option>
+		</score>
+		<score type="question" id="q12" hid="plan_004" rate="1" kp="">
+			<option>plan_004_p1</option>
+			<option>plan_004_p2</option>
+		</score>
+		<!-- 诊断操作测评答案 -->
+		<score type="question" id="q13" hid="operator_001" rate="2" kp="">
+			<option>operator_001_p2</option>
+		</score>
+		<score type="question" id="q14" hid="operator_002" rate="1" kp="">
+			<option>operator_002_p3</option>
+		</score>
+		<score type="question" id="q15" hid="operator_003" rate="1" kp="">
+			<option>operator_003_p2</option>
+		</score>
+		<score type="question" id="q16" hid="operator_004" rate="1" kp="">
+			<option>operator_004_p1</option>
+			<option>operator_004_p2</option>
+		</score>
+		<!-- 检测操作测评答案 -->
+		<score type="question" id="q17" hid="check_001" rate="2" kp="">
+			<option>check_001_p2</option>
+		</score>
+		<score type="question" id="q18" hid="check_002" rate="1" kp="">
+			<option>check_002_p3</option>
+		</score>
+		<score type="question" id="q19" hid="check_003" rate="1" kp="">
+			<option>check_003_p2</option>
+		</score>
+		<score type="question" id="q20" hid="check_004" rate="1" kp="">
+			<option>check_004_p1</option>
+			<option>check_004_p2</option>
+		</score>
+	</scores>
+</fault>

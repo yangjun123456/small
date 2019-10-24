@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>无标题文档</title>
+</head>
+
+<body>
+	<script>
+		//外观模式(门面模式)
+		//外观模式定义了一个高层接口，把子类集合在一起，然后方便调用。
+
+		/*function Foo(){}
+		function Bar(){}
+		function Baz(){}
+
+		var obj1 = new Foo();
+		var obj2 = new Bar();
+		var obj3 = new Baz();*/
+
+		/*function Foo(){}
+		function Bar(){}
+		function Baz(){}
+
+		function Facade(){
+			var obj1 = new Foo();
+			var obj2 = new Bar();
+			var obj3 = new Baz();
+		}
+
+		new Facade();*/
+
+		function Search() {}
+		Search.prototype.show = function (str) {
+			this.removeOldData();
+			this.showNewData(str);
+			this.upDatePage();
+		};
+		Search.prototype.upDatePage = function () {
+
+		};
+		Search.prototype.removeOldData = function () {
+
+		};
+		Search.prototype.showNewData = function () {
+
+		};
+
+		var s1 = new Search();
+		s1.show('苹果');
+	</script>
+</body>
+
+</html>

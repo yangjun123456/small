@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>无标题文档</title>
+</head>
+
+<body>
+	<input type="button" value="打印日志" id="input1">
+	<script>
+		//单例模式确保某个类只有一个实例，而且自行实例化并向整个系统提供这个实例。
+
+		/*function Foo(){
+			this.name = 'hello';
+		}
+		var obj1 = new Foo();
+		var obj2 = new Foo();
+		console.log(obj1==obj2);*/
+
+
+		function Bar() {
+			if (!Bar._instance) {
+				Bar._instance = {
+					name: 'hello',
+					init: function () {
+						alert(1);
+					}
+				};
+			}
+			this.init = function () {
+				alert(1);
+			}
+			return Bar._instance;
+		}
+		var obj1 = new Bar();
+		var obj2 = new Bar();
+		console.log(obj1 == obj2);
+		obj1.init();
+
+		/*function Baz(){
+		    if (!Baz._instance) {
+		        Baz._instance = {
+					logs : [],
+					print : function(){
+						var This = this;
+						var timer = setInterval(function(){
+							var log = This.logs.shift();
+							if(log){
+								console.log(log);
+							}
+							else{
+								clearInterval(timer);
+							}
+						},500);
+					},
+					add : function(log){
+						this.logs.push(log);
+					}
+				}
+		    }
+		    return Baz._instance;
+		}
+
+		var arr = ['第一个日志','第二个日志','第三个日志'];
+		for(var i=0;i<arr.length;i++){
+			var obj = new Baz();
+			obj.add(arr[i]);	
+		}
+
+		var btn = document.getElementById('input1');
+		btn.onclick = function(){
+			var obj = new Baz();
+			obj.print();
+		};*/
+	</script>
+</body>
+
+</html>
