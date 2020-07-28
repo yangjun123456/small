@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <img src="./test.jpg" id='testImg' width="300" alt="">
+    <img src="./test.jpg" id='testImg' width="100" alt="">
     <canvas width="1000" height="1000" id='canvas' style="background-color:rgba(0,0,255,0.5);"></canvas>
     <script>
         document.getElementById("testImg").onload = function () {
@@ -33,7 +33,7 @@
 
             context.save();
 
-            context.drawImage(image, 0, 0, imgW, imgH);
+            context.drawImage(image, 0, 0, 136, 94);
             var imageData = context.getImageData(0, 0, imgW, imgH);
             console.log(imageData);
             var data = imageData.data,
@@ -59,7 +59,7 @@
             context.putImageData(imageData, 0, 0);
 
 
-            
+
 
             var imgUrl = canvas.toDataURL('image/png');
             var createImage = document.createElement('img');
@@ -67,7 +67,6 @@
             createImage.src = imgUrl;
             document.body.appendChild(createImage);
         }
-
     </script>
 </body>
 
